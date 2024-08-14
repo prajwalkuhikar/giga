@@ -142,13 +142,14 @@
 #         os.system("rm {}".format(logfile))
 
 
-import blenderproc as bproc
+import blenderproc as bproc  # Ensure BlenderProc is imported
 import numpy as np
 import argparse
 import os
 import sys
 from PIL import Image
 import logging
+import bpy  # Import bpy at the beginning
 
 def render_blender_proc(
     cad_path,
@@ -182,8 +183,7 @@ def render_blender_proc(
     # Load the object into the scene
     obj = bproc.loader.load_obj(cad_path)[0]
     if recenter_origin:
-        # Recenter origin of object at center of its bounding box
-        import bpy
+        # Recenter origin of object at the center of its bounding box
         bpy.context.view_layer.objects.active = bpy.context.view_layer.objects[-1]
         bpy.ops.object.origin_set(type="ORIGIN_CENTER_OF_MASS", center='BOUNDS')
     if is_tless:
@@ -198,7 +198,7 @@ def render_blender_proc(
     obj.set_cp("category_id", 1)
     # Activate normal and distance rendering
     bproc.renderer.enable_distance_output(True)
-    # Set the amount of samples, which should be used for the color rendering
+    # Set the amount of samples, which should be used for color rendering
     bproc.renderer.set_max_amount_of_samples(100)
     bproc.renderer.set_output_format(enable_transparency=True)
 
