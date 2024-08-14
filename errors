@@ -1,0 +1,47 @@
+PS C:\Users\XRSpecial\gigapose> python -m src.scripts.render_bop_templates +test_dataset_name=tless
+[2024-08-14 11:50:30,020][__main__][INFO] - Rendering templates for lmo
+[2024-08-14 11:50:30,021][__main__][INFO] - Found 0 objects
+[2024-08-14 11:50:30,055][__main__][INFO] - Start rendering for 0 objects
+Error executing job with overrides: ['+test_dataset_name=tless']
+Traceback (most recent call last):
+Error executing job with overrides: ['+test_dataset_name=tless']
+Traceback (most recent call last):
+  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\runpy.py", line 197, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\runpy.py", line 197, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "C:\Users\XRSpecial\gigapose\src\scripts\render_bop_templates.py", line 134, in <module>
+    render()
+  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\hydra\main.py", line 94, in decorated_main
+    _run_hydra(
+  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\hydra\_internal\utils.py", line 394, in _run_hydra
+    _run_app(
+  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\hydra\_internal\utils.py", line 457, in _run_app
+    run_and_report(
+  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\hydra\_internal\utils.py", line 223, in run_and_report
+    raise ex
+  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\hydra\_internal\utils.py", line 220, in run_and_report
+  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\hydra\_internal\utils.py", line 223, in run_and_report
+    raise ex
+  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\hydra\_internal\utils.py", line 223, in run_and_report
+    raise ex
+  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\hydra\_internal\utils.py", line 223, in run_and_report
+    raise ex
+  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\hydra\_internal\utils.py", line 223, in run_and_report
+  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\hydra\_internal\utils.py", line 223, in run_and_report
+    raise ex
+  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\hydra\_internal\utils.py", line 220, in run_and_report
+    return func()
+  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\hydra\_internal\utils.py", line 458, in <lambda>
+    lambda: hydra.run(
+  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\hydra\_internal\hydra.py", line 132, in run
+    _ = ret.return_value
+  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\hydra\core\utils.py", line 260, in return_value
+    raise self._return_value
+  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\hydra\core\utils.py", line 186, in run_job
+    ret.return_value = task_function(task_cfg)
+  File "C:\Users\XRSpecial\gigapose\src\scripts\render_bop_templates.py", line 116, in render
+    obj_pose_path=obj_pose_path,
+UnboundLocalError: local variable 'obj_pose_path' referenced before assignment
