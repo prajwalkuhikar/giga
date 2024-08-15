@@ -1,19 +1,40 @@
 PS C:\Users\XRSpecial\gigapose-1> python test.py test_dataset_name=tless run_id=$NAME_RUN
-[2024-08-15 13:45:10,757][__main__][INFO] - Initializing logger, callbacks and trainer
-[2024-08-15 13:45:10,760][__main__][INFO] - Tensorboard logger initialized at ./gigaPose_datasets/results/large_/gigapose
+[2024-08-15 14:16:43,840][__main__][INFO] - Initializing logger, callbacks and trainer
+[2024-08-15 14:16:43,843][__main__][INFO] - Tensorboard logger initialized at ./gigaPose_datasets/results/large_/gigapose
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+HPU available: False, using: 0 HPUs
+[2024-08-15 14:16:43,883][__main__][INFO] - Trainer initialized!
+Using cache found in C:\Users\XRSpecial/.cache\torch\hub\facebookresearch_dinov2_main
+[2024-08-15 14:16:45,441][xformers][WARNING] - WARNING[XFORMERS]: xFormers can't load C++/CUDA extensions. xFormers was built for:
+    PyTorch 2.0.0+cu118 with CUDA 1108 (you have 2.4.0+cu118)
+    Python  3.9.13 (you have 3.9.19)
+  Please reinstall xformers (see https://github.com/facebookresearch/xformers#installing-xformers)
+  Memory-efficient attention, SwiGLU, sparse and more won't be available.
+  Set XFORMERS_MORE_DETAILS=1 for more details
+[2024-08-15 14:16:45,451][xformers][WARNING] - A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+[2024-08-15 14:16:45,460][dinov2][INFO] - using MLP layer as FFN
+[2024-08-15 14:16:48,052][src.models.network.ae_net][INFO] - Initialize AENet done!
+[2024-08-15 14:16:48,147][src.models.network.ist_net][INFO] - Init for Regressor with done!
+[2024-08-15 14:16:48,191][src.models.network.ist_net][INFO] - Init weights for ISTNet done!
+[2024-08-15 14:16:48,191][src.models.network.ist_net][INFO] - Init for ISTNet done!
+[2024-08-15 14:16:48,194][src.models.gigaPose][INFO] - Initialize GigaPose done!
+[2024-08-15 14:16:48,194][__main__][INFO] - Model initialized!
+[2024-08-15 14:16:48,242][src.dataloader.test][INFO] - Split: test_primesense for tless!
 Error executing job with overrides: ['test_dataset_name=tless', 'run_id=']
 Traceback (most recent call last):
   File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\hydra\_internal\instantiate\_instantiate2.py", line 92, in _call_target
     return _target_(*args, **kwargs)
-  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\pytorch_lightning\utilities\argparse.py", line 70, in insert_env_defaults
-    return fn(self, **kwargs)
-  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\pytorch_lightning\trainer\trainer.py", line 400, in __init__
-    self._accelerator_connector = _AcceleratorConnector(
-  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\pytorch_lightning\trainer\connectors\accelerator_connector.py", line 143, in __init__
-    self._accelerator_flag = self._choose_gpu_accelerator_backend()
-  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\pytorch_lightning\trainer\connectors\accelerator_connector.py", line 353, in _choose_gpu_accelerator_backend
-    raise MisconfigurationException("No supported gpu backend found!")
-lightning_fabric.utilities.exceptions.MisconfigurationException: No supported gpu backend found!
+  File "C:\Users\XRSpecial\gigapose-1\src\dataloader\test.py", line 72, in __init__
+    web_dataset = WebSceneDataset(webdataset_dir / split, depth_scale=depth_scale)
+  File "C:\Users\XRSpecial\gigapose-1\src\custom_megapose\web_scene_dataset.py", line 131, in __init__
+    frame_index = self.load_frame_index()
+  File "C:\Users\XRSpecial\gigapose-1\src\custom_megapose\web_scene_dataset.py", line 144, in load_frame_index
+    key_to_shard = inout.load_json(root_dir / "key_to_shard.json")
+  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\bop_toolkit_lib\inout.py", line 78, in load_json
+    with open(path, "r") as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'gigaPose_datasets\\datasets\\tless\\test_primesense\\key_to_shard.json'
 
 The above exception was the direct cause of the following exception:
 
@@ -38,13 +59,14 @@ Traceback (most recent call last):
     raise self._return_value
   File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\hydra\core\utils.py", line 186, in run_job
     ret.return_value = task_function(task_cfg)
-  File "C:\Users\XRSpecial\gigapose-1\test.py", line 43, in run_test
-    trainer = instantiate(cfg_trainer)
+  File "C:\Users\XRSpecial\gigapose-1\test.py", line 54, in run_test
+    test_dataset = instantiate(cfg.data.test.dataloader)
   File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\hydra\_internal\instantiate\_instantiate2.py", line 226, in instantiate
     return instantiate_node(
   File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\hydra\_internal\instantiate\_instantiate2.py", line 347, in instantiate_node
     return _call_target(_target_, partial, args, kwargs, full_key)
   File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\hydra\_internal\instantiate\_instantiate2.py", line 97, in _call_target
     raise InstantiationException(msg) from e
-hydra.errors.InstantiationException: Error in call to target 'pytorch_lightning.trainer.trainer.Trainer':
-MisconfigurationException('No 
+hydra.errors.InstantiationException: Error in call to target 'src.dataloader.test.GigaPoseTestSet':
+FileNotFoundError(2, 'No such file or directory')
+full_key: data.test.dataloader
