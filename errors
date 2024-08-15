@@ -1,34 +1,25 @@
 import os
 from pathlib import Path
-import hydra
 from omegaconf import DictConfig, OmegaConf
+import hydra
 from src.utils.logging import get_logger
 
 logger = get_logger(__name__)
 
-def run_download(cfg_dataset: DictConfig) -> None:
+def run_conversion(cfg_dataset: DictConfig) -> None:
     os.makedirs(cfg_dataset.local_dir, exist_ok=True)
     
-    # Check if the dataset already exists
+    # Check if the dataset exists
     dataset_exists = all(
         (cfg_dataset.local_dir / f"{cfg_dataset.name}_{key}").exists()
         for key in ["rgb", "cad", "base"]
     )
     
     if not dataset_exists:
-        for key in ["rgb", "cad", "base"]:
-            tmp_dir = cfg_dataset.tmp / f"{cfg_dataset.name}_{key}.zip"
-            download_cmd = f"wget -O {tmp_dir} {cfg_dataset[key]} --no-check-certificate"
-            logger.info(f"Running {download_cmd}")
-            os.system(download_cmd)
-
-            unzip_cmd = f"unzip {tmp_dir} -d {cfg_dataset.local_dir}"
-            if key == "base":
-                unzip_cmd = unzip_cmd.replace("unzip", "unzip -j")
-            logger.info(f"Running {unzip_cmd}")
-            os.system(unzip_cmd)
+        logger.error(f"Dataset {cfg_dataset.name} does not exist in {cfg_dataset.local_dir}")
+        return
     else:
-        logger.info(f"Dataset {cfg_dataset.name} already exists. Skipping download.")
+        logger.info(f"Dataset {cfg_dataset.name} exists. Proceeding with conversion.")
 
     # formatting the dataset to webdataset format
     imagewise_cmd = "python -m src.scripts.convert_scenewise_to_imagewise --input INPUT --output OUTPUT --nprocs 10"
@@ -68,7 +59,7 @@ def run_download(cfg_dataset: DictConfig) -> None:
     config_path="../../configs",
     config_name="train",
 )
-def download(cfg: DictConfig) -> None:
+def process(cfg: DictConfig) -> None:
     cfg_data = cfg.data.test
     cfg_data.root_dir = Path(cfg_data.root_dir)
     tmp_dir = cfg_data.root_dir / "tmp"
@@ -89,21 +80,16 @@ def download(cfg: DictConfig) -> None:
             prefix = "_primesense"
         else:
             prefix = ""
-        rgb_url = f"{cfg_data.source_url}/{dataset_name}_test{prefix}_bop19.zip"
-        cad_url = f"{cfg_data.source_url}/{dataset_name}_models.zip"
-        base_url = f"{cfg_data.source_url}/{dataset_name}_base.zip"
+        
         cfg_dataset = OmegaConf.create(
             {
                 "name": dataset_name,
-                "rgb": rgb_url,
-                "cad": cad_url,
-                "base": base_url,
                 "local_dir": cfg_data.root_dir / dataset_name,
                 "tmp": tmp_dir,
             }
         )
-        run_download(cfg_dataset)
+        run_conversion(cfg_dataset)
         logger.info("---" * 100)
 
 if __name__ == "__main__":
-    download()
+    process()
