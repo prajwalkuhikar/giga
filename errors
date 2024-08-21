@@ -1,22 +1,105 @@
-# Add debugging statements to print tensor shapes
-            print(f"images_crop shape: {images_crop.shape}")
-            print(f"renders shape: {renders.shape}")
-
-            # Resize renders to match the dimensions of images_crop
-            if images_crop.shape[2:] != renders.shape[2:]:
-                renders = F.interpolate(renders, size=images_crop.shape[2:], mode='bilinear', align_corners=False)
-                print(f"Resized renders shape: {renders.shape}")
-
-
-
-
-# Add debugging statements to print tensor shapes
-                print(f"images_crop shape: {iter_outputs.images_crop.shape}")
-                print(f"renders shape: {iter_outputs.renders.shape}")
-
-                # Resize renders to match the dimensions of images_crop
-                if iter_outputs.images_crop.shape[2:] != iter_outputs.renders.shape[2:]:
-                    iter_outputs.renders = F.interpolate(
-                        iter_outputs.renders, size=iter_outputs.images_crop.shape[2:], mode='bilinear', align_corners=False
-                    )
-                    print(f"Resized renders shape: {iter_outputs.renders.shape}")
+images_crop shape: torch.Size([8, 3, 240, 320])
+renders shape: torch.Size([8, 24, 320, 240])
+Resized renders shape: torch.Size([8, 24, 240, 320])
+images_crop shape: torch.Size([8, 3, 240, 320])
+renders shape: torch.Size([8, 24, 320, 240])
+Resized renders shape: torch.Size([8, 24, 240, 320])
+images_crop shape: torch.Size([8, 3, 240, 320])
+renders shape: torch.Size([8, 24, 320, 240])
+Resized renders shape: torch.Size([8, 24, 240, 320])
+images_crop shape: torch.Size([8, 3, 240, 320])
+renders shape: torch.Size([8, 24, 320, 240])
+Resized renders shape: torch.Size([8, 24, 240, 320])
+images_crop shape: torch.Size([8, 3, 240, 320])
+renders shape: torch.Size([8, 24, 240, 320])
+images_crop shape: torch.Size([8, 3, 240, 320])
+renders shape: torch.Size([8, 24, 240, 320])
+images_crop shape: torch.Size([8, 3, 240, 320])
+renders shape: torch.Size([8, 24, 240, 320])
+images_crop shape: torch.Size([8, 3, 240, 320])
+renders shape: torch.Size([8, 24, 240, 320])
+images_crop shape: torch.Size([8, 3, 240, 320])
+renders shape: torch.Size([8, 24, 240, 320])
+images_crop shape: torch.Size([7, 3, 240, 320])
+renders shape: torch.Size([7, 24, 320, 240])
+Resized renders shape: torch.Size([7, 24, 240, 320])
+images_crop shape: torch.Size([7, 3, 240, 320])
+renders shape: torch.Size([7, 24, 320, 240])
+Resized renders shape: torch.Size([7, 24, 240, 320])
+images_crop shape: torch.Size([7, 3, 240, 320])
+renders shape: torch.Size([7, 24, 320, 240])
+Resized renders shape: torch.Size([7, 24, 240, 320])
+images_crop shape: torch.Size([7, 3, 240, 320])
+renders shape: torch.Size([7, 24, 320, 240])
+Resized renders shape: torch.Size([7, 24, 240, 320])
+images_crop shape: torch.Size([7, 3, 240, 320])
+renders shape: torch.Size([7, 24, 320, 240])
+Resized renders shape: torch.Size([7, 24, 240, 320])
+images_crop shape: torch.Size([7, 3, 240, 320])
+renders shape: torch.Size([7, 24, 240, 320])
+images_crop shape: torch.Size([7, 3, 240, 320])
+renders shape: torch.Size([7, 24, 240, 320])
+images_crop shape: torch.Size([7, 3, 240, 320])
+renders shape: torch.Size([7, 24, 240, 320])
+images_crop shape: torch.Size([7, 3, 240, 320])
+renders shape: torch.Size([7, 24, 240, 320])
+images_crop shape: torch.Size([7, 3, 240, 320])
+renders shape: torch.Size([7, 24, 240, 320])
+Error executing job with overrides: ['test_dataset_name=tless', 'run_id=']
+Traceback (most recent call last):
+  File "C:\Users\XRSpecial\gigapose-1\refine.py", line 86, in <module>
+    run_refiner()
+  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\hydra\main.py", line 94, in decorated_main
+    _run_hydra(
+  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\hydra\_internal\utils.py", line 394, in _run_hydra
+    _run_app(
+  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\hydra\_internal\utils.py", line 457, in _run_app
+    run_and_report(
+  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\hydra\_internal\utils.py", line 223, in run_and_report
+    raise ex
+  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\hydra\_internal\utils.py", line 220, in run_and_report
+    return func()
+  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\hydra\_internal\utils.py", line 458, in <lambda>
+    lambda: hydra.run(
+  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\hydra\_internal\hydra.py", line 132, in run
+    _ = ret.return_value
+  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\hydra\core\utils.py", line 260, in return_value
+    raise self._return_value
+  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\hydra\core\utils.py", line 186, in run_job
+    ret.return_value = task_function(task_cfg)
+  File "C:\Users\XRSpecial\gigapose-1\refine.py", line 79, in run_refiner
+    trainer.test(refiner, dataloaders=dataloader)
+  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\pytorch_lightning\trainer\trainer.py", line 753, in test
+    return call._call_and_handle_interrupt(
+  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\pytorch_lightning\trainer\call.py", line 44, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\pytorch_lightning\trainer\trainer.py", line 793, in _test_impl
+    results = self._run(model, ckpt_path=ckpt_path)
+  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\pytorch_lightning\trainer\trainer.py", line 986, in _run
+    results = self._run_stage()
+  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\pytorch_lightning\trainer\trainer.py", line 1023, in _run_stage
+    return self._evaluation_loop.run()
+  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\pytorch_lightning\loops\utilities.py", line 182, in _decorator
+    return loop_run(self, *args, **kwargs)
+  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\pytorch_lightning\loops\evaluation_loop.py", line 135, in run
+    return loop_run(self, *args, **kwargs)
+    return loop_run(self, *args, **kwargs)
+  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\pytorch_lightning\loops\evaluation_loop.py", line 135, in run
+    return loop_run(self, *args, **kwargs)
+  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\pytorch_lightning\loops\evaluation_loop.py", line 135, in run
+    self._evaluation_step(batch, batch_idx, dataloader_idx, dataloader_iter)
+  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\pytorch_lightning\loops\evaluation_loop.py", line 396, in _evaluation_step
+    output = call._call_strategy_hook(trainer, hook_name, *step_args)
+  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\pytorch_lightning\trainer\call.py", line 311, in _call_strategy_hook
+    output = fn(*args, **kwargs)
+  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\pytorch_lightning\strategies\strategy.py", line 424, in test_step
+    return self.lightning_module.test_step(*args, **kwargs)
+  File "C:\Users\XRSpecial\gigapose-1\src\models\refiner.py", line 114, in test_step
+    ) = self.pose_estimator.forward_scoring_model(
+  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\torch\utils\_contextlib.py", line 115, in decorate_context
+    return func(*args, **kwargs)
+  File "C:\Users\XRSpecial\gigapose-1\src\megapose\inference\pose_estimator.py", line 277, in forward_scoring_model
+    out_ = self.coarse_model.forward_coarse(
+  File "C:\Users\XRSpecial\gigapose-1\src\megapose\models\pose_rigid.py", line 728, in forward_coarse
+    x = torch.cat((images_crop, renders), dim=1)
+RuntimeError: Sizes of tensors must match except in dimension 1. Expected size 240 but got size 320 for tensor number 1 in the list.
