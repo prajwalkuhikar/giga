@@ -1,95 +1,82 @@
-import os
-from pathlib import Path
-from omegaconf import DictConfig, OmegaConf
-import hydra
-from src.utils.logging import get_logger
-
-logger = get_logger(__name__)
-
-def run_conversion(cfg_dataset: DictConfig) -> None:
-    os.makedirs(cfg_dataset.local_dir, exist_ok=True)
-    
-    # Check if the dataset exists
-    dataset_exists = all(
-        (cfg_dataset.local_dir / f"{cfg_dataset.name}_{key}").exists()
-        for key in ["rgb", "cad", "base"]
-    )
-    
-    if not dataset_exists:
-        logger.error(f"Dataset {cfg_dataset.name} does not exist in {cfg_dataset.local_dir}")
-        return
-    else:
-        logger.info(f"Dataset {cfg_dataset.name} exists. Proceeding with conversion.")
-
-    # formatting the dataset to webdataset format
-    imagewise_cmd = "python -m src.scripts.convert_scenewise_to_imagewise --input INPUT --output OUTPUT --nprocs 10"
-    webdataset_cmd = "python -m src.scripts.convert_imagewise_to_webdataset --input INPUT --output OUTPUT"
-
-    if cfg_dataset.name in ["tless", "hb"]:
-        split = "test_primesense"
-    else:
-        split = "test"
-    split_dir = cfg_dataset.local_dir / split
-    tmp_dir = cfg_dataset.tmp / f"{cfg_dataset.name}_image_wise" / split
-    os.makedirs(tmp_dir, exist_ok=True)
-
-    imagewise_cmd = imagewise_cmd.replace("INPUT", str(split_dir))
-    imagewise_cmd = imagewise_cmd.replace("OUTPUT", str(tmp_dir))
-
-    logger.info(f"Running {imagewise_cmd}")
-    os.system(imagewise_cmd)
-
-    webdataset_cmd = webdataset_cmd.replace("INPUT", str(tmp_dir))
-    webdataset_cmd = webdataset_cmd.replace("OUTPUT", str(split_dir))
-
-    if cfg_dataset.name in ["tless", "ycbv", "tudl", "itodd"]:
-        webdataset_cmd += " --nprocs 4"
-    logger.info(f"Running {webdataset_cmd}")
-    os.system(webdataset_cmd)
-
-    # Check if key_to_shard.json was created
-    key_to_shard_path = split_dir / "key_to_shard.json"
-    if key_to_shard_path.exists():
-        logger.info(f"key_to_shard.json created successfully at {key_to_shard_path}")
-    else:
-        logger.error(f"key_to_shard.json not found at {key_to_shard_path}")
-
-@hydra.main(
-    version_base=None,
-    config_path="../../configs",
-    config_name="train",
-)
-def process(cfg: DictConfig) -> None:
-    cfg_data = cfg.data.test
-    cfg_data.root_dir = Path(cfg_data.root_dir)
-    tmp_dir = cfg_data.root_dir / "tmp"
-    os.makedirs(tmp_dir, exist_ok=True)
-
-    OmegaConf.set_struct(cfg, False)
-    for dataset_name in [
-        "lmo",
-        "tless",
-        "tudl",
-        "icbin",
-        "itodd",  # gt not available
-        "hb",  # gt not available
-        "ycbv",
-    ]:
-        logger.info(f"Processing {dataset_name}")
-        if dataset_name in ["tless", "hb"]:
-            prefix = "_primesense"
-        else:
-            prefix = ""
-        
-        cfg_dataset = OmegaConf.create(
-            {
-                "name": dataset_name,
-                "local_dir": cfg_data.root_dir / dataset_name,
-                "tmp": tmp_dir,
-            }
-        )
-        run_conversion(cfg_dataset)
-        logger.info("---" * 100)
-
-if __name__ == "__main__":
-    process()
+PS C:\Users\XRSpecial\gigapose-1> python test.py test_dataset_name=tless run_id=$NAME_RUN
+[2024-08-21 10:53:15,348][__main__][INFO] - Initializing logger, callbacks and trainer
+[2024-08-21 10:53:15,351][__main__][INFO] - Tensorboard logger initialized at ./gigaPose_datasets/results/large_/gigapose
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+HPU available: False, using: 0 HPUs
+[2024-08-21 10:53:15,395][__main__][INFO] - Trainer initialized!
+Using cache found in C:\Users\XRSpecial/.cache\torch\hub\facebookresearch_dinov2_main
+[2024-08-21 10:53:17,396][xformers][WARNING] - A matching Triton is not available, some optimizations will not be enabled.
+Error caught was: No module named 'triton'
+[2024-08-21 10:53:17,413][dinov2][INFO] - using MLP layer as FFN
+[2024-08-21 10:53:19,649][src.models.network.ae_net][INFO] - Initialize AENet done!
+[2024-08-21 10:53:19,736][src.models.network.ist_net][INFO] - Init for Regressor with done!
+[2024-08-21 10:53:19,778][src.models.network.ist_net][INFO] - Init weights for ISTNet done!
+[2024-08-21 10:53:19,779][src.models.network.ist_net][INFO] - Init for ISTNet done!
+[2024-08-21 10:53:19,783][src.models.gigaPose][INFO] - Initialize GigaPose done!
+[2024-08-21 10:53:19,783][__main__][INFO] - Model initialized!
+[2024-08-21 10:53:19,888][src.dataloader.test][INFO] - Split: test_primesense for tless!
+[2024-08-21 10:53:19,895][src.custom_megapose.web_scene_dataset][INFO] - WebSceneDataset: 4 shards
+[2024-08-21 10:53:19,895][src.custom_megapose.web_scene_dataset][INFO] - IterableWebSceneDataset: 1000 samples
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 30/30 [00:00<00:00, 15101.91it/s]
+[2024-08-21 10:53:19,906][src.custom_megapose.template_dataset][INFO] - Loaded 30 template datas
+[2024-08-21 10:53:21,315][src.utils.inout][INFO] - Loading test list from gigaPose_datasets\datasets\tless\test_targets_bop19.json
+4904it [00:02, 1868.63it/s]
+[2024-08-21 10:53:23,949][src.utils.inout][INFO] - Detections: 4904 test samples!
+[2024-08-21 10:53:24,011][src.dataloader.keypoints][INFO] - Initialized normalized center patch done!
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 30/30 [00:00<00:00, 20135.88it/s] 
+[2024-08-21 10:53:24,022][src.custom_megapose.template_dataset][INFO] - Loaded 30 template datas
+[2024-08-21 10:53:24,023][__main__][INFO] - Dataloaders initialized!
+You are using a CUDA device ('NVIDIA GeForce RTX 3090') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision
+Initializing distributed: GLOBAL_RANK: 0, MEMBER: 1/1
+[W C:\cb\pytorch_1000000000000\work\torch\csrc\distributed\c10d\socket.cpp:601] [c10d] The client socket has failed to connect to [DESKTOP-4K20DES]:49926 (system error: 10049 - Die angeforderte Adresse ist in diesem Kontext ung³ltig.).
+[W C:\cb\pytorch_1000000000000\work\torch\csrc\distributed\c10d\socket.cpp:601] [c10d] The client socket has failed to connect to [DESKTOP-4K20DES]:49926 (system error: 10049 - Die angeforderte Adresse ist in diesem Kontext ung³ltig.).
+Error executing job with overrides: ['test_dataset_name=tless', 'run_id=']
+Traceback (most recent call last):
+  File "C:\Users\XRSpecial\gigapose-1\test.py", line 87, in <module>
+    run_test()
+  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\hydra\main.py", line 94, in decorated_main
+    _run_hydra(
+  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\hydra\_internal\utils.py", line 394, in _run_hydra
+    _run_app(
+  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\hydra\_internal\utils.py", line 457, in _run_app
+    run_and_report(
+  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\hydra\_internal\utils.py", line 223, in run_and_report
+    raise ex
+  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\hydra\_internal\utils.py", line 220, in run_and_report
+    return func()
+  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\hydra\_internal\utils.py", line 458, in <lambda>
+    lambda: hydra.run(
+  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\hydra\_internal\hydra.py", line 132, in run
+  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\hydra\_internal\hydra.py", line 132, in run
+  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\hydra\_internal\hydra.py", line 132, in run
+  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\hydra\_internal\hydra.py", line 132, in run
+  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\hydra\_internal\hydra.py", line 132, in run
+    _ = ret.return_value
+  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\hydra\core\utils.py", line 260, in return_value
+    raise self._return_value
+  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\hydra\core\utils.py", line 186, in run_job
+    ret.return_value = task_function(task_cfg)
+  File "C:\Users\XRSpecial\gigapose-1\test.py", line 77, in run_test
+    trainer.test(
+  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\pytorch_lightning\trainer\trainer.py", line 753, in test
+    return call._call_and_handle_interrupt(
+  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\pytorch_lightning\trainer\call.py", line 43, in _call_and_handle_interrupt
+    return trainer.strategy.launcher.launch(trainer_fn, *args, trainer=trainer, **kwargs)
+  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\pytorch_lightning\strategies\launchers\subprocess_script.py", line 105, in launch
+    return function(*args, **kwargs)
+  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\pytorch_lightning\trainer\trainer.py", line 793, in _test_impl
+    results = self._run(model, ckpt_path=ckpt_path)
+  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\pytorch_lightning\trainer\trainer.py", line 942, in _run
+    self.strategy.setup_environment()
+  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\pytorch_lightning\strategies\ddp.py", line 154, in setup_environment
+    self.setup_distributed()
+  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\pytorch_lightning\strategies\ddp.py", line 203, in setup_distributed
+    _init_dist_connection(self.cluster_environment, self._process_group_backend, timeout=self._timeout)
+  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\lightning_fabric\utilities\distributed.py", line 293, in _init_dist_connection
+    torch.distributed.init_process_group(torch_distributed_backend, rank=global_rank, world_size=world_size, **kwargs)
+  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\torch\distributed\distributed_c10d.py", line 895, in init_process_group
+    default_pg = _new_process_group_helper(
+  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\torch\distributed\distributed_c10d.py", line 998, in _new_process_group_helper
+    raise RuntimeError("Distributed package doesn't have NCCL " "built in")
+RuntimeError: Distributed package doesn't have NCCL built in
