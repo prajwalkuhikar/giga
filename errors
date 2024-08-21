@@ -1,96 +1,61 @@
-PS C:\Users\XRSpecial\gigapose-1> python test.py test_dataset_name=tless run_id=$NAME_RUN
-[2024-08-21 11:57:08,568][__main__][INFO] - Initializing logger, callbacks and trainer
-[2024-08-21 11:57:08,571][__main__][INFO] - Tensorboard logger initialized at ./gigaPose_datasets/results/large_/gigapose
-GPU available: True (cuda), used: True
-TPU available: False, using: 0 TPU cores
-HPU available: False, using: 0 HPUs
-[2024-08-21 11:57:08,605][__main__][INFO] - Trainer initialized!
-Using cache found in C:\Users\XRSpecial/.cache\torch\hub\facebookresearch_dinov2_main
-[2024-08-21 11:57:10,127][xformers][WARNING] - A matching Triton is not available, some optimizations will not be enabled.
-Error caught was: No module named 'triton'
-[2024-08-21 11:57:10,134][dinov2][INFO] - using MLP layer as FFN
-[2024-08-21 11:57:12,185][src.models.network.ae_net][INFO] - Initialize AENet done!
-[2024-08-21 11:57:12,270][src.models.network.ist_net][INFO] - Init for Regressor with done!
-[2024-08-21 11:57:12,312][src.models.network.ist_net][INFO] - Init weights for ISTNet done!
-[2024-08-21 11:57:12,313][src.models.network.ist_net][INFO] - Init for ISTNet done!
-[2024-08-21 11:57:12,316][src.models.gigaPose][INFO] - Initialize GigaPose done!
-[2024-08-21 11:57:12,316][__main__][INFO] - Model initialized!
-[2024-08-21 11:57:12,371][src.dataloader.test][INFO] - Split: test_primesense for tless!
-[2024-08-21 11:57:12,372][src.custom_megapose.web_scene_dataset][INFO] - WebSceneDataset: 4 shards
-[2024-08-21 11:57:12,372][src.custom_megapose.web_scene_dataset][INFO] - IterableWebSceneDataset: 1000 samples
-100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 30/30 [00:00<00:00, 20142.33it/s] 
-[2024-08-21 11:57:12,376][src.custom_megapose.template_dataset][INFO] - Loaded 30 template datas
-[2024-08-21 11:57:13,707][src.utils.inout][INFO] - Loading test list from gigaPose_datasets\datasets\tless\test_targets_bop19.json
-4904it [00:02, 1861.93it/s]
-[2024-08-21 11:57:16,346][src.utils.inout][INFO] - Detections: 4904 test samples!
-[2024-08-21 11:57:16,404][src.dataloader.keypoints][INFO] - Initialized normalized center patch done!
-100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 30/30 [00:00<00:00, 20132.66it/s] 
-[2024-08-21 11:57:16,415][src.custom_megapose.template_dataset][INFO] - Loaded 30 template datas
-[2024-08-21 11:57:16,416][__main__][INFO] - Dataloaders initialized!
-You are using a CUDA device ('NVIDIA GeForce RTX 3090') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision
-Restoring states from the checkpoint path at ./gigaPose_datasets/pretrained/gigaPose_v1.ckpt
-LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
-Loaded model weights from the checkpoint at ./gigaPose_datasets/pretrained/gigaPose_v1.ckpt
-Testing DataLoader 0:   0%|                                                                                                                                                                            | 0/1000 [00:00<?, ?it/s][2024-08-21 11:57:18,823][src.models.gigaPose][INFO] - Initializing template data ...
-100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 30/30 [04:00<00:00,  8.00s/it]
-[2024-08-21 12:01:18,984][src.models.gigaPose][INFO] - Init tless done! Avg time=8.00535744825999 s/object██████████████████████████████████████████████████████████████████████████████████████| 30/30 [04:00<00:00,  7.97s/it] 
-Testing DataLoader 0:  25%|████████████████████████████████████████▎                                                                                                                         | 249/1000 [08:02<24:15,  0.52it/s]Error executing job with overrides: ['test_dataset_name=tless', 'run_id=']
-Traceback (most recent call last):
-  File "C:\Users\XRSpecial\gigapose-1\test.py", line 87, in <module>
-    run_test()
-  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\hydra\main.py", line 94, in decorated_main
-    _run_hydra(
-  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\hydra\_internal\utils.py", line 394, in _run_hydra
-    _run_app(
-  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\hydra\_internal\utils.py", line 457, in _run_app
-    run_and_report(
-  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\hydra\_internal\utils.py", line 223, in run_and_report
-    raise ex
-  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\hydra\_internal\utils.py", line 220, in run_and_report
-    return func()
-  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\hydra\_internal\utils.py", line 458, in <lambda>
-    lambda: hydra.run(
-  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\hydra\_internal\hydra.py", line 132, in run
-    _ = ret.return_value
-  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\hydra\core\utils.py", line 260, in return_value
-    raise self._return_value
-  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\hydra\core\utils.py", line 186, in run_job
-    ret.return_value = task_function(task_cfg)
-  File "C:\Users\XRSpecial\gigapose-1\test.py", line 77, in run_test
-    trainer.test(
-  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\pytorch_lightning\trainer\trainer.py", line 753, in test
-    return call._call_and_handle_interrupt(
-  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\pytorch_lightning\trainer\call.py", line 44, in _call_and_handle_interrupt
-    return trainer_fn(*args, **kwargs)
-  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\pytorch_lightning\trainer\trainer.py", line 793, in _test_impl
-    results = self._run(model, ckpt_path=ckpt_path)
-  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\pytorch_lightning\trainer\trainer.py", line 986, in _run
-    results = self._run_stage()
-  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\pytorch_lightning\trainer\trainer.py", line 1023, in _run_stage
-    return self._evaluation_loop.run()
-  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\pytorch_lightning\loops\utilities.py", line 182, in _decorator
-    return loop_run(self, *args, **kwargs)
-  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\pytorch_lightning\loops\evaluation_loop.py", line 128, in run
-    batch, batch_idx, dataloader_idx = next(data_fetcher)
-  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\pytorch_lightning\loops\fetchers.py", line 133, in __next__
-    batch = super().__next__()
-  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\pytorch_lightning\loops\fetchers.py", line 60, in __next__
-    batch = next(self.iterator)
-  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\pytorch_lightning\utilities\combined_loader.py", line 341, in __next__
-    out = next(self._iterator)
-  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\pytorch_lightning\utilities\combined_loader.py", line 142, in __next__
-    out = next(self.iterators[0])
-  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\torch\utils\data\dataloader.py", line 634, in __next__
-    data = self._next_data()
-  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\torch\utils\data\dataloader.py", line 678, in _next_data
-    data = self._dataset_fetcher.fetch(index)  # may raise StopIteration
-  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\torch\utils\data\_utils\fetch.py", line 32, in fetch
-    data.append(next(self.dataset_iter))
-  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\webdataset\pipeline.py", line 71, in iterator
-    for sample in self.iterator1():
-  File "C:\Users\XRSpecial\gigapose-1\src\custom_megapose\web_scene_dataset.py", line 204, in load_scene_ds_obs_iterator
-    for sample in samples:
-  File "C:\Users\XRSpecial\gigapose-1\src\megapose\utils\webdataset.py", line 39, in group_by_keys
-    fname, value = filesample["fname"], filesample["data"]
-KeyError: 'fname'
-Testing DataLoader 0:  25%|██▍       | 249/1000 [08:03<24:17,  0.52it/s]
+import logging
+from webdataset import filters
+from webdataset.handlers import reraise_exception
+from webdataset.tariterators import (
+    base_plus_ext,
+    tar_file_expander,
+    url_opener,
+    valid_sample,
+)
+
+trace = False
+
+# Handles duplicate file names in different shards
+def group_by_keys(data, keys=base_plus_ext, lcase=True, suffixes=None, handler=None):
+    """Return function over iterator that groups key, value pairs into samples.
+
+    :param keys: function that splits the key into key and extension (base_plus_ext)
+    :param lcase: convert suffixes to lower case (Default value = True)
+    """
+    current_sample = None
+    for filesample in data:
+        assert isinstance(filesample, dict)
+        try:
+            fname, value = filesample["fname"], filesample["data"]
+        except KeyError as e:
+            logging.error(f"KeyError: {e} in filesample: {filesample}")
+            continue  # Skip this filesample if the key is missing
+        prefix, suffix = keys(fname)
+        if trace:
+            print(
+                prefix,
+                suffix,
+                current_sample.keys() if isinstance(current_sample, dict) else None,
+            )
+        if prefix is None:
+            continue
+        if lcase:
+            suffix = suffix.lower()
+        if current_sample is None or prefix != current_sample["__key__"]:
+            if valid_sample(current_sample):
+                yield current_sample
+            current_sample = dict(__key__=prefix, __url__=filesample["__url__"])
+        if suffix in current_sample:
+            print(
+                f"{fname}: duplicate file name in tar file {suffix} {current_sample.keys()}"
+            )
+            current_sample["__bad__"] = True
+        if suffixes is None or suffix in suffixes:
+            current_sample[suffix] = value
+    if valid_sample(current_sample):
+        yield current_sample
+
+
+def tarfile_samples(src, handler=reraise_exception):
+    streams = url_opener(src, handler=handler)
+    files = tar_file_expander(streams, handler=handler)
+    samples = group_by_keys(files, handler=handler)
+    return samples
+
+
+tarfile_to_samples = filters.pipelinefilter(tarfile_samples)
