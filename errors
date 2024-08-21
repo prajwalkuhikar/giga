@@ -1,188 +1,22 @@
-PS C:\Users\XRSpecial\gigapose-1> python refine.py test_dataset_name=tless run_id=$NAME_RUN
-[2024-08-21 13:58:31,246][__main__][INFO] - Loading dataset ...
-[2024-08-21 13:58:31,248][src.custom_megapose.refiner_utils][INFO] - Found 2 files in ./gigaPose_datasets/results/large_\predictions
-[2024-08-21 13:58:31,248][src.custom_megapose.refiner_utils][INFO] - Using large-pbrreal-rgb-mmodel_tless-test_MultiHypothesis.csv as initial pose
-[2024-08-21 13:58:31,281][src.dataloader.test][INFO] - Split: test_primesense for tless!
-[2024-08-21 13:58:31,282][src.custom_megapose.web_scene_dataset][INFO] - WebSceneDataset: 4 shards
-[2024-08-21 13:58:31,282][src.custom_megapose.web_scene_dataset][INFO] - IterableWebSceneDataset: 1000 samples
-100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 30/30 [00:00<00:00, 30203.82it/s]
-[2024-08-21 13:58:31,284][src.custom_megapose.template_dataset][INFO] - Loaded 30 template datas
-[2024-08-21 13:58:32,678][src.utils.inout][INFO] - Loading test list from gigaPose_datasets\datasets\tless\test_targets_bop19.json
-4904it [00:02, 1879.27it/s]
-[2024-08-21 13:58:35,291][src.utils.inout][INFO] - Detections: 4904 test samples!
-Filtering init locs:   0%|                                                                                                                                                       | 0/1000 [00:00<?, ?it/s][2024-08-21 13:58:35,577][src.dataloader.test][WARNING] - Image key 000018_000466 has no locs!
-[2024-08-21 13:58:35,579][src.dataloader.test][WARNING] - Image key 000018_000452 has no locs!
-[2024-08-21 13:58:35,580][src.dataloader.test][WARNING] - Image key 000011_000469 has no locs!
-[2024-08-21 13:58:35,581][src.dataloader.test][WARNING] - Image key 000011_000397 has no locs!
-[2024-08-21 13:58:35,582][src.dataloader.test][WARNING] - Image key 000018_000461 has no locs!
-Filtering init locs: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1000/1000 [00:00<00:00, 125837.93it/s]
-[2024-08-21 13:58:35,586][src.dataloader.test][INFO] - Drop from 30030 to 22870 locs!
-[2024-08-21 13:58:35,586][src.dataloader.test][INFO] - Loaded 5 init locs!
-[2024-08-21 13:58:35,586][src.dataloader.test][INFO] - Loaded init loc for refinement!
-[2024-08-21 13:58:35,587][src.dataloader.keypoints][INFO] - Initialized normalized center patch done!
-[2024-08-21 13:58:35,587][__main__][INFO] - Prediction is from Model=large, run_id=MultiHypothesis done!
-gigaPose_datasets/datasets/tless/models_cad/obj_000001.ply
-gigaPose_datasets/datasets/tless/models_cad/obj_000002.ply
-gigaPose_datasets/datasets/tless/models_cad/obj_000003.ply
-gigaPose_datasets/datasets/tless/models_cad/obj_000004.ply
-gigaPose_datasets/datasets/tless/models_cad/obj_000005.ply
-gigaPose_datasets/datasets/tless/models_cad/obj_000006.ply
-gigaPose_datasets/datasets/tless/models_cad/obj_000007.ply
-gigaPose_datasets/datasets/tless/models_cad/obj_000008.ply
-gigaPose_datasets/datasets/tless/models_cad/obj_000009.ply
-gigaPose_datasets/datasets/tless/models_cad/obj_000010.ply
-gigaPose_datasets/datasets/tless/models_cad/obj_000011.ply
-gigaPose_datasets/datasets/tless/models_cad/obj_000012.ply
-gigaPose_datasets/datasets/tless/models_cad/obj_000013.ply
-gigaPose_datasets/datasets/tless/models_cad/obj_000014.ply
-gigaPose_datasets/datasets/tless/models_cad/obj_000015.ply
-gigaPose_datasets/datasets/tless/models_cad/obj_000016.ply
-gigaPose_datasets/datasets/tless/models_cad/obj_000017.ply
-gigaPose_datasets/datasets/tless/models_cad/obj_000018.ply
-gigaPose_datasets/datasets/tless/models_cad/obj_000019.ply
-gigaPose_datasets/datasets/tless/models_cad/obj_000020.ply
-gigaPose_datasets/datasets/tless/models_cad/obj_000021.ply
-gigaPose_datasets/datasets/tless/models_cad/obj_000022.ply
-gigaPose_datasets/datasets/tless/models_cad/obj_000023.ply
-gigaPose_datasets/datasets/tless/models_cad/obj_000024.ply
-gigaPose_datasets/datasets/tless/models_cad/obj_000025.ply
-gigaPose_datasets/datasets/tless/models_cad/obj_000026.ply
-gigaPose_datasets/datasets/tless/models_cad/obj_000027.ply
-gigaPose_datasets/datasets/tless/models_cad/obj_000028.ply
-gigaPose_datasets/datasets/tless/models_cad/obj_000029.ply
-gigaPose_datasets/datasets/tless/models_cad/obj_000030.ply
-[2024-08-21 13:58:35,591][__main__][INFO] - Loading CAD dataset done!
-[2024-08-21 13:58:41,875][src.models.refiner][INFO] - Init Refiner done!
-[2024-08-21 13:58:41,916][pytorch_lightning.utilities.rank_zero][INFO] - GPU available: True (cuda), used: True
-[2024-08-21 13:58:41,918][pytorch_lightning.utilities.rank_zero][INFO] - TPU available: False, using: 0 TPU cores
-[2024-08-21 13:58:41,918][pytorch_lightning.utilities.rank_zero][INFO] - HPU available: False, using: 0 HPUs
-[2024-08-21 13:58:41,919][__main__][INFO] - Trainer initialized!
-[2024-08-21 13:58:41,919][__main__][INFO] - Refining poses ...
-[2024-08-21 13:58:41,920][pytorch_lightning.utilities.rank_zero][INFO] - You are using a CUDA device ('NVIDIA GeForce RTX 3090') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision
-[2024-08-21 13:58:41,988][pytorch_lightning.accelerators.cuda][INFO] - LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
-Testing DataLoader 0:   0%|                                                                                                                                                      | 0/1000 [00:00<?, ?it/s][2024-08-21 13:58:42,979][src.models.refiner][INFO] - Moving models to cuda:0 done!
-0 0
-Known pipe types:
-  wglGraphicsPipe
-(all display modules loaded.)
-0 0
-Known pipe types:
-  wglGraphicsPipe
-(all display modules loaded.)
-0 0
-Known pipe types:
-  wglGraphicsPipe
-(all display modules loaded.)
-:display(warning): FrameBufferProperties available less than requested.
-  requested: depth_bits=24 color_bits=24 red_bits=1 green_bits=1 blue_bits=1 alpha_bits=8 back_buffers=1 force_hardware
-  got: depth_bits=24 color_bits=24 red_bits=8 green_bits=8 blue_bits=8 alpha_bits=8 accum_bits=64 force_hardware
-:display(warning): FrameBufferProperties available less than requested.
-  requested: depth_bits=24 color_bits=24 red_bits=1 green_bits=1 blue_bits=1 alpha_bits=8 back_buffers=1 force_hardware
-  got: depth_bits=24 color_bits=24 red_bits=8 green_bits=8 blue_bits=8 alpha_bits=8 accum_bits=64 force_hardware
-:display(warning): FrameBufferProperties available less than requested.
-  requested: depth_bits=24 color_bits=24 red_bits=1 green_bits=1 blue_bits=1 alpha_bits=8 back_buffers=1 force_hardware
-  got: depth_bits=24 color_bits=24 red_bits=8 green_bits=8 blue_bits=8 alpha_bits=8 accum_bits=64 force_hardware
-0 0
-Known pipe types:
-  wglGraphicsPipe
-(all display modules loaded.)
-:display(warning): FrameBufferProperties available less than requested.
-  requested: depth_bits=24 color_bits=24 red_bits=1 green_bits=1 blue_bits=1 alpha_bits=8 back_buffers=1 force_hardware
-  got: depth_bits=24 color_bits=24 red_bits=8 green_bits=8 blue_bits=8 alpha_bits=8 accum_bits=64 force_hardware
-0 0
-Known pipe types:
-  wglGraphicsPipe
-(all display modules loaded.)
-0 0
-Known pipe types:
-  wglGraphicsPipe
-(all display modules loaded.)
-:display(warning): FrameBufferProperties available less than requested.
-  requested: depth_bits=24 color_bits=24 red_bits=1 green_bits=1 blue_bits=1 alpha_bits=8 back_buffers=1 force_hardware
-  got: depth_bits=24 color_bits=24 red_bits=8 green_bits=8 blue_bits=8 alpha_bits=8 accum_bits=64 force_hardware
-:display(warning): FrameBufferProperties available less than requested.
-  requested: depth_bits=24 color_bits=24 red_bits=1 green_bits=1 blue_bits=1 alpha_bits=8 back_buffers=1 force_hardware
-  got: depth_bits=24 color_bits=24 red_bits=8 green_bits=8 blue_bits=8 alpha_bits=8 accum_bits=64 force_hardware
-0 0
-0 0
-Known pipe types:
-  wglGraphicsPipe
-Known pipe types:
-(all display modules loaded.)
-  wglGraphicsPipe
-(all display modules loaded.)
-0 0
-Known pipe types:
-  wglGraphicsPipe
-(all display modules loaded.)
-0 0
-Known pipe types:
-  wglGraphicsPipe
-(all display modules loaded.)
-:display(warning): FrameBufferProperties available less than requested.
-  requested: depth_bits=24 color_bits=24 red_bits=1 green_bits=1 blue_bits=1 alpha_bits=8 back_buffers=1 force_hardware
-  got: depth_bits=24 color_bits=24 red_bits=8 green_bits=8 blue_bits=8 alpha_bits=8 accum_bits=64 force_hardware
-:display(warning): FrameBufferProperties available less than requested.
-  requested: depth_bits=24 color_bits=24 red_bits=1 green_bits=1 blue_bits=1 alpha_bits=8 back_buffers=1 force_hardware
-  got: depth_bits=24 color_bits=24 red_bits=8 green_bits=8 blue_bits=8 alpha_bits=8 accum_bits=64 force_hardware
-:display(warning): FrameBufferProperties available less than requested.
-  requested: depth_bits=24 color_bits=24 red_bits=1 green_bits=1 blue_bits=1 alpha_bits=8 back_buffers=1 force_hardware
-  got: depth_bits=24 color_bits=24 red_bits=8 green_bits=8 blue_bits=8 alpha_bits=8 accum_bits=64 force_hardware
-:display(warning): FrameBufferProperties available less than requested.
-  requested: depth_bits=24 color_bits=24 red_bits=1 green_bits=1 blue_bits=1 alpha_bits=8 back_buffers=1 force_hardware
-  got: depth_bits=24 color_bits=24 red_bits=8 green_bits=8 blue_bits=8 alpha_bits=8 accum_bits=64 force_hardware
-Error executing job with overrides: ['test_dataset_name=tless', 'run_id=']
-Traceback (most recent call last):
-  File "C:\Users\XRSpecial\gigapose-1\refine.py", line 86, in <module>
-    run_refiner()
-  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\hydra\main.py", line 94, in decorated_main
-    _run_hydra(
-  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\hydra\_internal\utils.py", line 394, in _run_hydra
-    _run_app(
-  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\hydra\_internal\utils.py", line 457, in _run_app
-    run_and_report(
-  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\hydra\_internal\utils.py", line 223, in run_and_report
-    raise ex
-  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\hydra\_internal\utils.py", line 220, in run_and_report
-    return func()
-  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\hydra\_internal\utils.py", line 458, in <lambda>
-    lambda: hydra.run(
-  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\hydra\_internal\hydra.py", line 132, in run
-    _ = ret.return_value
-  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\hydra\core\utils.py", line 260, in return_value
-    raise self._return_value
-  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\hydra\core\utils.py", line 186, in run_job
-    ret.return_value = task_function(task_cfg)
-  File "C:\Users\XRSpecial\gigapose-1\refine.py", line 79, in run_refiner
-    trainer.test(refiner, dataloaders=dataloader)
-  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\pytorch_lightning\trainer\trainer.py", line 753, in test
-    return call._call_and_handle_interrupt(
-  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\pytorch_lightning\trainer\call.py", line 44, in _call_and_handle_interrupt
-    return trainer_fn(*args, **kwargs)
-  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\pytorch_lightning\trainer\trainer.py", line 793, in _test_impl
-    results = self._run(model, ckpt_path=ckpt_path)
-  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\pytorch_lightning\trainer\trainer.py", line 986, in _run
-    results = self._run_stage()
-  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\pytorch_lightning\trainer\trainer.py", line 1023, in _run_stage
-    return self._evaluation_loop.run()
-  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\pytorch_lightning\loops\utilities.py", line 182, in _decorator
-    return loop_run(self, *args, **kwargs)
-  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\pytorch_lightning\loops\evaluation_loop.py", line 135, in run
-    self._evaluation_step(batch, batch_idx, dataloader_idx, dataloader_iter)
-  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\pytorch_lightning\loops\evaluation_loop.py", line 396, in _evaluation_step
-    output = call._call_strategy_hook(trainer, hook_name, *step_args)
-  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\pytorch_lightning\trainer\call.py", line 311, in _call_strategy_hook
-    output = fn(*args, **kwargs)
-  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\pytorch_lightning\strategies\strategy.py", line 424, in test_step
-    return self.lightning_module.test_step(*args, **kwargs)
-  File "C:\Users\XRSpecial\gigapose-1\src\models\refiner.py", line 102, in test_step
-    preds, refiner_extra_data = self.pose_estimator.forward_refiner(
-  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\torch\utils\_contextlib.py", line 115, in decorate_context
-    return func(*args, **kwargs)
-  File "C:\Users\XRSpecial\gigapose-1\src\megapose\inference\pose_estimator.py", line 166, in forward_refiner
-    outputs_ = self.refiner_model(
-  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\torch\nn\modules\module.py", line 1501, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "C:\Users\XRSpecial\gigapose-1\src\megapose\models\pose_rigid.py", line 584, in forward
-    x = torch.cat((images_crop, renders), dim=1)
-RuntimeError: Sizes of tensors must match except in dimension 1. Expected size 240 but got size 320 for tensor number 1 in the list.
+# Add debugging statements to print tensor shapes
+            print(f"images_crop shape: {images_crop.shape}")
+            print(f"renders shape: {renders.shape}")
+
+            # Resize renders to match the dimensions of images_crop
+            if images_crop.shape[2:] != renders.shape[2:]:
+                renders = F.interpolate(renders, size=images_crop.shape[2:], mode='bilinear', align_corners=False)
+                print(f"Resized renders shape: {renders.shape}")
+
+
+
+
+# Add debugging statements to print tensor shapes
+                print(f"images_crop shape: {iter_outputs.images_crop.shape}")
+                print(f"renders shape: {iter_outputs.renders.shape}")
+
+                # Resize renders to match the dimensions of images_crop
+                if iter_outputs.images_crop.shape[2:] != iter_outputs.renders.shape[2:]:
+                    iter_outputs.renders = F.interpolate(
+                        iter_outputs.renders, size=iter_outputs.images_crop.shape[2:], mode='bilinear', align_corners=False
+                    )
+                    print(f"Resized renders shape: {iter_outputs.renders.shape}")
