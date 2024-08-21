@@ -1,354 +1,80 @@
-python refine.py test_dataset_name=tless run_id=$NAME_RUN
-[2024-08-21 13:43:48,017][__main__][INFO] - Loading dataset ...
-[2024-08-21 13:43:48,020][src.custom_megapose.refiner_utils][INFO] - Found 2 files in ./gigaPose_datasets/results/large_\predictions
-[2024-08-21 13:43:48,020][src.custom_megapose.refiner_utils][INFO] - Using large-pbrreal-rgb-mmodel_tless-test_MultiHypothesis.csv as initial pose
-[2024-08-21 13:43:48,051][src.dataloader.test][INFO] - Split: test_primesense for tless!
-[2024-08-21 13:43:48,053][src.custom_megapose.web_scene_dataset][INFO] - WebSceneDataset: 4 shards
-[2024-08-21 13:43:48,053][src.custom_megapose.web_scene_dataset][INFO] - IterableWebSceneDataset: 1000 samples
-100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 30/30 [00:00<00:00, 20139.10it/s]
-[2024-08-21 13:43:48,056][src.custom_megapose.template_dataset][INFO] - Loaded 30 template datas
-[2024-08-21 13:43:49,452][src.utils.inout][INFO] - Loading test list from gigaPose_datasets\datasets\tless\test_targets_bop19.json
-4904it [00:02, 1885.76it/s]
-[2024-08-21 13:43:52,056][src.utils.inout][INFO] - Detections: 4904 test samples!
-Filtering init locs:   0%|                                                                                                                                                       | 0/1000 [00:00<?, ?it/s][2024-08-21 13:43:52,340][src.dataloader.test][WARNING] - Image key 000018_000466 has no locs!
-[2024-08-21 13:43:52,342][src.dataloader.test][WARNING] - Image key 000018_000452 has no locs!
-[2024-08-21 13:43:52,343][src.dataloader.test][WARNING] - Image key 000011_000469 has no locs!
-[2024-08-21 13:43:52,344][src.dataloader.test][WARNING] - Image key 000011_000397 has no locs!
-[2024-08-21 13:43:52,345][src.dataloader.test][WARNING] - Image key 000018_000461 has no locs!
-Filtering init locs: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1000/1000 [00:00<00:00, 125841.70it/s]
-[2024-08-21 13:43:52,350][src.dataloader.test][INFO] - Drop from 30030 to 22870 locs!
-[2024-08-21 13:43:52,350][src.dataloader.test][INFO] - Loaded 5 init locs!
-[2024-08-21 13:43:52,350][src.dataloader.test][INFO] - Loaded init loc for refinement!
-[2024-08-21 13:43:52,350][src.dataloader.keypoints][INFO] - Initialized normalized center patch done!
-[2024-08-21 13:43:52,351][__main__][INFO] - Prediction is from Model=large, run_id=MultiHypothesis done!
-gigaPose_datasets/datasets/tless/models_cad/obj_000001.ply
-gigaPose_datasets/datasets/tless/models_cad/obj_000002.ply
-gigaPose_datasets/datasets/tless/models_cad/obj_000003.ply
-gigaPose_datasets/datasets/tless/models_cad/obj_000004.ply
-gigaPose_datasets/datasets/tless/models_cad/obj_000005.ply
-gigaPose_datasets/datasets/tless/models_cad/obj_000006.ply
-gigaPose_datasets/datasets/tless/models_cad/obj_000007.ply
-gigaPose_datasets/datasets/tless/models_cad/obj_000008.ply
-gigaPose_datasets/datasets/tless/models_cad/obj_000009.ply
-gigaPose_datasets/datasets/tless/models_cad/obj_000010.ply
-gigaPose_datasets/datasets/tless/models_cad/obj_000011.ply
-gigaPose_datasets/datasets/tless/models_cad/obj_000012.ply
-gigaPose_datasets/datasets/tless/models_cad/obj_000013.ply
-gigaPose_datasets/datasets/tless/models_cad/obj_000014.ply
-gigaPose_datasets/datasets/tless/models_cad/obj_000015.ply
-gigaPose_datasets/datasets/tless/models_cad/obj_000016.ply
-gigaPose_datasets/datasets/tless/models_cad/obj_000017.ply
-gigaPose_datasets/datasets/tless/models_cad/obj_000018.ply
-gigaPose_datasets/datasets/tless/models_cad/obj_000019.ply
-gigaPose_datasets/datasets/tless/models_cad/obj_000020.ply
-gigaPose_datasets/datasets/tless/models_cad/obj_000021.ply
-gigaPose_datasets/datasets/tless/models_cad/obj_000022.ply
-gigaPose_datasets/datasets/tless/models_cad/obj_000023.ply
-gigaPose_datasets/datasets/tless/models_cad/obj_000024.ply
-gigaPose_datasets/datasets/tless/models_cad/obj_000025.ply
-gigaPose_datasets/datasets/tless/models_cad/obj_000026.ply
-gigaPose_datasets/datasets/tless/models_cad/obj_000027.ply
-gigaPose_datasets/datasets/tless/models_cad/obj_000028.ply
-gigaPose_datasets/datasets/tless/models_cad/obj_000029.ply
-gigaPose_datasets/datasets/tless/models_cad/obj_000030.ply
-[2024-08-21 13:43:52,354][__main__][INFO] - Loading CAD dataset done!
-[2024-08-21 13:43:59,332][src.models.refiner][INFO] - Init Refiner done!
-[2024-08-21 13:43:59,370][pytorch_lightning.utilities.rank_zero][INFO] - GPU available: True (cuda), used: True
-[2024-08-21 13:43:59,371][pytorch_lightning.utilities.rank_zero][INFO] - TPU available: False, using: 0 TPU cores
-[2024-08-21 13:43:59,372][pytorch_lightning.utilities.rank_zero][INFO] - HPU available: False, using: 0 HPUs
-[2024-08-21 13:43:59,372][__main__][INFO] - Trainer initialized!
-[2024-08-21 13:43:59,372][__main__][INFO] - Refining poses ...
-[2024-08-21 13:43:59,373][pytorch_lightning.utilities.rank_zero][INFO] - You are using a CUDA device ('NVIDIA GeForce RTX 3090') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision
-[2024-08-21 13:43:59,444][pytorch_lightning.accelerators.cuda][INFO] - LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
-Testing DataLoader 0:   0%|                                                                                                                                                      | 0/1000 [00:00<?, ?it/s][2024-08-21 13:44:00,603][src.models.refiner][INFO] - Moving models to cuda:0 done!
-0 0
-Known pipe types:
-  wglGraphicsPipe
-(all display modules loaded.)
-0 0
-Known pipe types:
-  wglGraphicsPipe
-(all display modules loaded.)
-0 0
-Known pipe types:
-  wglGraphicsPipe
-(all display modules loaded.)
-:display(warning): FrameBufferProperties available less than requested.
-  requested: depth_bits=1 color_bits=3 red_bits=1 green_bits=1 blue_bits=1 alpha_bits=1 multisamples=4 back_buffers=1 force_hardware
-  got: depth_bits=24 color_bits=:display2(warning): 4FrameBufferProperties available less than requested.
- red_bits=8  requested: depth_bits=1 color_bits= 3green_bits= 8red_bits= 1blue_bits= green_bits=8 alpha_bits=18 accum_bits=64  blue_bits=force_hardware
-1 alpha_bits=1 multisamples=4 back_buffers=1 force_hardware
-  got: depth_bits=24 color_bits=24 red_bits=8 green_bits=8 blue_bits=8 alpha_bits=8 accum_bits=64 force_hardware
-:display(warning): FrameBufferProperties available less than requested.
-  requested: depth_bits=1 color_bits=3 red_bits=1 green_bits=1 blue_bits=1 alpha_bits=1 multisamples=4 back_buffers=1 force_hardware
-  got: depth_bits=24 color_bits=24 red_bits=8 green_bits=8 blue_bits=8 alpha_bits=8 accum_bits=64 force_hardware
-0 0
-Known pipe types:
-  wglGraphicsPipe
-(all display modules loaded.)
-:display(warning): FrameBufferProperties available less than requested.
-  requested: depth_bits=1 color_bits=3 red_bits=1 green_bits=1 blue_bits=1 alpha_bits=1 multisamples=4 back_buffers=1 force_hardware
-  got: depth_bits=24 color_bits=24 red_bits=8 green_bits=8 blue_bits=8 alpha_bits=8 accum_bits=64 force_hardware
-0 0
-Known pipe types:
-  wglGraphicsPipe
-(all display modules loaded.)
-0 0
-0 0
-Known pipe types:
-  wglGraphicsPipe
-(all display modules loaded.)
-Known pipe types:
-  wglGraphicsPipe
-(all display modules loaded.)
-:display(error): Could not get requested FrameBufferProperties; abandoning window.
-  requested: depth_bits=1 color_bits=3 red_bits=1 green_bits=1 blue_bits=1 alpha_bits=1 multisamples=4 back_buffers=1 force_hardware
-  got: depth_bits=24 color_bits=24 red_bits=8 green_bits=8 blue_bits=8 alpha_bits=8 accum_bits=64 force_hardware
-Process Process-1:
-Traceback (most recent call last):
-  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\multiprocessing\process.py", line 315, in _bootstrap
-    self.run()
-  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\multiprocessing\process.py", line 108, in run
-    self._target(*self._args, **self._kwargs)
-  File "C:\Users\XRSpecial\gigapose-1\src\megapose\panda3d_renderer\panda3d_batch_renderer.py", line 119, in worker_loop
-    renderings = renderer.render_scene(
-  File "C:\Users\XRSpecial\gigapose-1\src\megapose\panda3d_renderer\panda3d_scene_renderer.py", line 320, in render_scene
-    cameras = self.setup_cameras(root_node, camera_datas)
-  File "C:\Users\XRSpecial\gigapose-1\src\megapose\panda3d_renderer\panda3d_scene_renderer.py", line 247, in setup_cameras
-    cameras = self.get_cameras(data_cameras)
-  File "C:\Users\XRSpecial\gigapose-1\src\megapose\panda3d_renderer\panda3d_scene_renderer.py", line 190, in get_cameras
-    self.create_new_camera(resolution_)
-  File "C:\Users\XRSpecial\gigapose-1\src\megapose\panda3d_renderer\panda3d_scene_renderer.py", line 174, in create_new_camera
-    cam = Panda3dCamera.create(
-  File "C:\Users\XRSpecial\gigapose-1\src\megapose\panda3d_renderer\types.py", line 182, in create
-    graphics_buffer.addRenderTexture(
-AttributeError: 'NoneType' object has no attribute 'addRenderTexture'
-:display(error:display): (error): Could not get requested FrameBufferProperties; abandoning window.
-Could not get requested FrameBufferProperties; abandoning window.
-  requested:   requested: depth_bits=depth_bits=11 color_bits= 3color_bits= red_bits=3 red_bits=11  green_bits=green_bits=11 blue_bits= blue_bits=1 alpha_bits=11  alpha_bits=multisamples=14  multisamples=back_buffers=4 1 back_buffers=force_hardware 1
- force_hardware
-  got:   got: depth_bits=depth_bits=24 color_bits=2424  red_bits=color_bits=24 8red_bits=8 green_bits=8 green_bits= blue_bits=88 alpha_bits= blue_bits=8 alpha_bits=88  accum_bits=64 accum_bits=64 force_hardware force_hardware
+# File: src/megapose/panda3d_renderer/types.py
 
-Process Process-2:
-Process Process-3:
-Traceback (most recent call last):
-Traceback (most recent call last):
-  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\multiprocessing\process.py", line 315, in _bootstrap
-    self.run()
-  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\multiprocessing\process.py", line 315, in _bootstrap
-    self.run()
-  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\multiprocessing\process.py", line 108, in run
-    self._target(*self._args, **self._kwargs)
-  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\multiprocessing\process.py", line 108, in run
-    self._target(*self._args, **self._kwargs)
-  File "C:\Users\XRSpecial\gigapose-1\src\megapose\panda3d_renderer\panda3d_batch_renderer.py", line 119, in worker_loop
-    renderings = renderer.render_scene(
-  File "C:\Users\XRSpecial\gigapose-1\src\megapose\panda3d_renderer\panda3d_batch_renderer.py", line 119, in worker_loop
-    renderings = renderer.render_scene(
-  File "C:\Users\XRSpecial\gigapose-1\src\megapose\panda3d_renderer\panda3d_scene_renderer.py", line 320, in render_scene
-    cameras = self.setup_cameras(root_node, camera_datas)
-  File "C:\Users\XRSpecial\gigapose-1\src\megapose\panda3d_renderer\panda3d_scene_renderer.py", line 320, in render_scene
-    cameras = self.setup_cameras(root_node, camera_datas)
-  File "C:\Users\XRSpecial\gigapose-1\src\megapose\panda3d_renderer\panda3d_scene_renderer.py", line 247, in setup_cameras
-    cameras = self.get_cameras(data_cameras)
-  File "C:\Users\XRSpecial\gigapose-1\src\megapose\panda3d_renderer\panda3d_scene_renderer.py", line 247, in setup_cameras
-    cameras = self.get_cameras(data_cameras)
-  File "C:\Users\XRSpecial\gigapose-1\src\megapose\panda3d_renderer\panda3d_scene_renderer.py", line 190, in get_cameras
-    self.create_new_camera(resolution_)
-  File "C:\Users\XRSpecial\gigapose-1\src\megapose\panda3d_renderer\panda3d_scene_renderer.py", line 190, in get_cameras
-    self.create_new_camera(resolution_)
-  File "C:\Users\XRSpecial\gigapose-1\src\megapose\panda3d_renderer\panda3d_scene_renderer.py", line 174, in create_new_camera
-    cam = Panda3dCamera.create(
-  File "C:\Users\XRSpecial\gigapose-1\src\megapose\panda3d_renderer\panda3d_scene_renderer.py", line 174, in create_new_camera
-    cam = Panda3dCamera.create(
-  File "C:\Users\XRSpecial\gigapose-1\src\megapose\panda3d_renderer\types.py", line 182, in create
-    graphics_buffer.addRenderTexture(
-  File "C:\Users\XRSpecial\gigapose-1\src\megapose\panda3d_renderer\types.py", line 182, in create
-    graphics_buffer.addRenderTexture(
-AttributeError: 'NoneType' object has no attribute 'addRenderTexture'
-AttributeError: 'NoneType' object has no attribute 'addRenderTexture'
-:display(warning): FrameBufferProperties available less than requested.
-  requested: depth_bits=1 color_bits=3 red_bits=1 green_bits=1 blue_bits=1 alpha_bits=1 multisamples=4 back_buffers=1 force_hardware
-  got: depth_bits=24 color_bits=24 red_bits=8 green_bits=8 blue_bits=8 alpha_bits=8 accum_bits=64 force_hardware
-:display(error): Could not get requested FrameBufferProperties; abandoning window.
-  requested: depth_bits=1 color_bits=3 red_bits=1 green_bits=1 blue_bits=1 alpha_bits=1 multisamples=4 back_buffers=1 force_hardware
-  got: depth_bits=24 color_bits=24 red_bits=8 green_bits=8 blue_bits=8 alpha_bits=8 accum_bits=64 force_hardware
-Process Process-4:
-Traceback (most recent call last):
-  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\multiprocessing\process.py", line 315, in _bootstrap
-    self.run()
-  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\multiprocessing\process.py", line 108, in run
-    self._target(*self._args, **self._kwargs)
-  File "C:\Users\XRSpecial\gigapose-1\src\megapose\panda3d_renderer\panda3d_batch_renderer.py", line 119, in worker_loop
-    renderings = renderer.render_scene(
-  File "C:\Users\XRSpecial\gigapose-1\src\megapose\panda3d_renderer\panda3d_scene_renderer.py", line 320, in render_scene
-    cameras = self.setup_cameras(root_node, camera_datas)
-  File "C:\Users\XRSpecial\gigapose-1\src\megapose\panda3d_renderer\panda3d_scene_renderer.py", line 247, in setup_cameras
-    cameras = self.get_cameras(data_cameras)
-  File "C:\Users\XRSpecial\gigapose-1\src\megapose\panda3d_renderer\panda3d_scene_renderer.py", line 190, in get_cameras
-    self.create_new_camera(resolution_)
-  File "C:\Users\XRSpecial\gigapose-1\src\megapose\panda3d_renderer\panda3d_scene_renderer.py", line 174, in create_new_camera
-    cam = Panda3dCamera.create(
-  File "C:\Users\XRSpecial\gigapose-1\src\megapose\panda3d_renderer\types.py", line 182, in create
-    graphics_buffer.addRenderTexture(
-AttributeError: 'NoneType' object has no attribute 'addRenderTexture'
-0 0
-0 0
-Known pipe types:
-  wglGraphicsPipe
-(all display modules loaded.)
-Known pipe types:
-  wglGraphicsPipe
-(all display modules loaded.)
-:display(warning): FrameBufferProperties available less than requested.
-  requested: depth_bits=1 color_bits=3 red_bits=1 green_bits=1 blue_bits=1 alpha_bits=1 multisamples=4 back_buffers=1 force_hardware
-  got: depth_bits=24 color_bits=24 red_bits=8 green_bits=8 blue_bits=8 alpha_bits=8 accum_bits=64 force_hardware
-:display(warning): FrameBufferProperties available less than requested.
-  requested: depth_bits=1 color_bits=3 red_bits=1 green_bits=1 blue_bits=1 alpha_bits=1 multisamples=4 back_buffers=1 force_hardware
-  got: depth_bits=24 color_bits=24 red_bits=8 green_bits=8 blue_bits=8 alpha_bits=8 accum_bits=64 force_hardware
-0 0
-Known pipe types:
-  wglGraphicsPipe
-(all display modules loaded.)
-:display(warning): FrameBufferProperties available less than requested.
-  requested: depth_bits=1 color_bits=3 red_bits=1 green_bits=1 blue_bits=1 alpha_bits=1 multisamples=4 back_buffers=1 force_hardware
-  got: depth_bits=24 color_bits=24 red_bits=8 green_bits=8 blue_bits=8 alpha_bits=8 accum_bits=64 force_hardware
-:display(warning): FrameBufferProperties available less than requested.
-  requested: depth_bits=1 color_bits=3 red_bits=1 green_bits=1 blue_bits=1 alpha_bits=1 multisamples=4 back_buffers=1 force_hardware
-  got: depth_bits=24 color_bits=24 red_bits=8 green_bits=8 blue_bits=8 alpha_bits=8 accum_bits=64 force_hardware
-:display(warning): FrameBufferProperties available less than requested.
-  requested: depth_bits=1 color_bits=3 red_bits=1 green_bits=1 blue_bits=1 alpha_bits=1 multisamples=4 back_buffers=1 force_hardware
-  got: depth_bits=24 color_bits=24 red_bits=8 green_bits=8 blue_bits=8 alpha_bits=8 accum_bits=64 force_hardware
-:display(error): Could not get requested FrameBufferProperties; abandoning window.
-  requested: depth_bits=1 color_bits=3 red_bits=1 green_bits=1 blue_bits=1 alpha_bits=1 multisamples=4 back_buffers=1 force_hardware
-  got: depth_bits=24 color_bits=24 red_bits=8 green_bits=8 blue_bits=8 alpha_bits=8 accum_bits=64 force_hardware
-Process Process-5:
-Traceback (most recent call last):
-  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\multiprocessing\process.py", line 315, in _bootstrap
-    self.run()
-  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\multiprocessing\process.py", line 108, in run
-    self._target(*self._args, **self._kwargs)
-  File "C:\Users\XRSpecial\gigapose-1\src\megapose\panda3d_renderer\panda3d_batch_renderer.py", line 119, in worker_loop
-    renderings = renderer.render_scene(
-  File "C:\Users\XRSpecial\gigapose-1\src\megapose\panda3d_renderer\panda3d_scene_renderer.py", line 320, in render_scene
-    cameras = self.setup_cameras(root_node, camera_datas)
-  File "C:\Users\XRSpecial\gigapose-1\src\megapose\panda3d_renderer\panda3d_scene_renderer.py", line 247, in setup_cameras
-    cameras = self.get_cameras(data_cameras)
-  File "C:\Users\XRSpecial\gigapose-1\src\megapose\panda3d_renderer\panda3d_scene_renderer.py", line 190, in get_cameras
-    self.create_new_camera(resolution_)
-  File "C:\Users\XRSpecial\gigapose-1\src\megapose\panda3d_renderer\panda3d_scene_renderer.py", line 174, in create_new_camera
-    cam = Panda3dCamera.create(
-  File "C:\Users\XRSpecial\gigapose-1\src\megapose\panda3d_renderer\types.py", line 182, in create
-    graphics_buffer.addRenderTexture(
-AttributeError: 'NoneType' object has no attribute 'addRenderTexture'
-:display(error): Could not get requested FrameBufferProperties; abandoning window.
-  requested: depth_bits=1 color_bits=3 red_bits=1 green_bits=1 blue_bits=1 alpha_bits=1 multisamples=4 back_buffers=1 force_hardware
-  got: depth_bits=24 color_bits=24 red_bits=8 green_bits=8 blue_bits=8 alpha_bits=8 accum_bits=64 force_hardware
-Process Process-7:
-Traceback (most recent call last):
-  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\multiprocessing\process.py", line 315, in _bootstrap
-    self.run()
-  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\multiprocessing\process.py", line 108, in run
-    self._target(*self._args, **self._kwargs)
-  File "C:\Users\XRSpecial\gigapose-1\src\megapose\panda3d_renderer\panda3d_batch_renderer.py", line 119, in worker_loop
-    renderings = renderer.render_scene(
-  File "C:\Users\XRSpecial\gigapose-1\src\megapose\panda3d_renderer\panda3d_scene_renderer.py", line 320, in render_scene
-    cameras = self.setup_cameras(root_node, camera_datas)
-  File "C:\Users\XRSpecial\gigapose-1\src\megapose\panda3d_renderer\panda3d_scene_renderer.py", line 247, in setup_cameras
-    cameras = self.get_cameras(data_cameras)
-  File "C:\Users\XRSpecial\gigapose-1\src\megapose\panda3d_renderer\panda3d_scene_renderer.py", line 190, in get_cameras
-    self.create_new_camera(resolution_)
-  File "C:\Users\XRSpecial\gigapose-1\src\megapose\panda3d_renderer\panda3d_scene_renderer.py", line 174, in create_new_camera
-    cam = Panda3dCamera.create(
-  File "C:\Users\XRSpecial\gigapose-1\src\megapose\panda3d_renderer\types.py", line 182, in create
-    graphics_buffer.addRenderTexture(
-AttributeError: 'NoneType' object has no attribute 'addRenderTexture'
-:display(error): Could not get requested FrameBufferProperties; abandoning window.
-  requested: depth_bits=1 color_bits=3 red_bits=1 green_bits=1 blue_bits=1 alpha_bits=1 multisamples=4 back_buffers=1 force_hardware
-  got: depth_bits=24 color_bits=24 red_bits=8 green_bits=8 blue_bits=8 alpha_bits=8 accum_bits=64 force_hardware
-Process Process-6:
-Traceback (most recent call last):
-  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\multiprocessing\process.py", line 315, in _bootstrap
-    self.run()
-  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\multiprocessing\process.py", line 108, in run
-    self._target(*self._args, **self._kwargs)
-  File "C:\Users\XRSpecial\gigapose-1\src\megapose\panda3d_renderer\panda3d_batch_renderer.py", line 119, in worker_loop
-    renderings = renderer.render_scene(
-  File "C:\Users\XRSpecial\gigapose-1\src\megapose\panda3d_renderer\panda3d_scene_renderer.py", line 320, in render_scene
-    cameras = self.setup_cameras(root_node, camera_datas)
-  File "C:\Users\XRSpecial\gigapose-1\src\megapose\panda3d_renderer\panda3d_scene_renderer.py", line 247, in setup_cameras
-    cameras = self.get_cameras(data_cameras)
-  File "C:\Users\XRSpecial\gigapose-1\src\megapose\panda3d_renderer\panda3d_scene_renderer.py", line 190, in get_cameras
-    self.create_new_camera(resolution_)
-  File "C:\Users\XRSpecial\gigapose-1\src\megapose\panda3d_renderer\panda3d_scene_renderer.py", line 174, in create_new_camera
-    cam = Panda3dCamera.create(
-  File "C:\Users\XRSpecial\gigapose-1\src\megapose\panda3d_renderer\types.py", line 182, in create
-    graphics_buffer.addRenderTexture(
-AttributeError: 'NoneType' object has no attribute 'addRenderTexture'
-:display(error): Could not get requested FrameBufferProperties; abandoning window.
-  requested: depth_bits=1 color_bits=3 red_bits=1 green_bits=1 blue_bits=1 alpha_bits=1 multisamples=4 back_buffers=1 force_hardware
-  got: depth_bits=24 color_bits=24 red_bits=8 green_bits=8 blue_bits=8 alpha_bits=8 accum_bits=64 force_hardware
-Process Process-8:
-Traceback (most recent call last):
-  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\multiprocessing\process.py", line 315, in _bootstrap
-    self.run()
-  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\multiprocessing\process.py", line 108, in run
-    self._target(*self._args, **self._kwargs)
-  File "C:\Users\XRSpecial\gigapose-1\src\megapose\panda3d_renderer\panda3d_batch_renderer.py", line 119, in worker_loop
-    renderings = renderer.render_scene(
-  File "C:\Users\XRSpecial\gigapose-1\src\megapose\panda3d_renderer\panda3d_scene_renderer.py", line 320, in render_scene
-    cameras = self.setup_cameras(root_node, camera_datas)
-  File "C:\Users\XRSpecial\gigapose-1\src\megapose\panda3d_renderer\panda3d_scene_renderer.py", line 247, in setup_cameras
-    cameras = self.get_cameras(data_cameras)
-  File "C:\Users\XRSpecial\gigapose-1\src\megapose\panda3d_renderer\panda3d_scene_renderer.py", line 190, in get_cameras
-    self.create_new_camera(resolution_)
-  File "C:\Users\XRSpecial\gigapose-1\src\megapose\panda3d_renderer\panda3d_scene_renderer.py", line 174, in create_new_camera
-    cam = Panda3dCamera.create(
-  File "C:\Users\XRSpecial\gigapose-1\src\megapose\panda3d_renderer\types.py", line 182, in create
-    graphics_buffer.addRenderTexture(
-AttributeError: 'NoneType' object has no attribute 'addRenderTexture'
-:display(error): Could not get requested FrameBufferProperties; abandoning window.
-  requested: depth_bits=1 color_bits=3 red_bits=1 green_bits=1 blue_bits=1 alpha_bits=1 multisamples=4 back_buffers=1 force_hardware
-  got: depth_bits=24 color_bits=24 red_bits=8 green_bits=8 blue_bits=8 alpha_bits=8 accum_bits=64 force_hardware
-Process Process-9:
-Traceback (most recent call last):
-  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\multiprocessing\process.py", line 315, in _bootstrap
-    self.run()
-  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\multiprocessing\process.py", line 108, in run
-    self._target(*self._args, **self._kwargs)
-  File "C:\Users\XRSpecial\gigapose-1\src\megapose\panda3d_renderer\panda3d_batch_renderer.py", line 119, in worker_loop
-    renderings = renderer.render_scene(
-  File "C:\Users\XRSpecial\gigapose-1\src\megapose\panda3d_renderer\panda3d_scene_renderer.py", line 320, in render_scene
-    cameras = self.setup_cameras(root_node, camera_datas)
-  File "C:\Users\XRSpecial\gigapose-1\src\megapose\panda3d_renderer\panda3d_scene_renderer.py", line 247, in setup_cameras
-    cameras = self.get_cameras(data_cameras)
-  File "C:\Users\XRSpecial\gigapose-1\src\megapose\panda3d_renderer\panda3d_scene_renderer.py", line 190, in get_cameras
-    self.create_new_camera(resolution_)
-  File "C:\Users\XRSpecial\gigapose-1\src\megapose\panda3d_renderer\panda3d_scene_renderer.py", line 174, in create_new_camera
-    cam = Panda3dCamera.create(
-  File "C:\Users\XRSpecial\gigapose-1\src\megapose\panda3d_renderer\types.py", line 182, in create
-    graphics_buffer.addRenderTexture(
-AttributeError: 'NoneType' object has no attribute 'addRenderTexture'
-:display(error): Could not get requested FrameBufferProperties; abandoning window.
-  requested: depth_bits=1 color_bits=3 red_bits=1 green_bits=1 blue_bits=1 alpha_bits=1 multisamples=4 back_buffers=1 force_hardware
-  got: depth_bits=24 color_bits=24 red_bits=8 green_bits=8 blue_bits=8 alpha_bits=8 accum_bits=64 force_hardware
-Process Process-10:
-Traceback (most recent call last):
-  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\multiprocessing\process.py", line 315, in _bootstrap
-    self.run()
-  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\multiprocessing\process.py", line 108, in run
-    self._target(*self._args, **self._kwargs)
-  File "C:\Users\XRSpecial\gigapose-1\src\megapose\panda3d_renderer\panda3d_batch_renderer.py", line 119, in worker_loop
-    renderings = renderer.render_scene(
-  File "C:\Users\XRSpecial\gigapose-1\src\megapose\panda3d_renderer\panda3d_scene_renderer.py", line 320, in render_scene
-    cameras = self.setup_cameras(root_node, camera_datas)
-  File "C:\Users\XRSpecial\gigapose-1\src\megapose\panda3d_renderer\panda3d_scene_renderer.py", line 247, in setup_cameras
-    cameras = self.get_cameras(data_cameras)
-  File "C:\Users\XRSpecial\gigapose-1\src\megapose\panda3d_renderer\panda3d_scene_renderer.py", line 190, in get_cameras
-    self.create_new_camera(resolution_)
-  File "C:\Users\XRSpecial\gigapose-1\src\megapose\panda3d_renderer\panda3d_scene_renderer.py", line 174, in create_new_camera
-    cam = Panda3dCamera.create(
-  File "C:\Users\XRSpecial\gigapose-1\src\megapose\panda3d_renderer\types.py", line 182, in create
-    graphics_buffer.addRenderTexture(
-AttributeError: 'NoneType' object has no attribute 'addRenderTexture'
+from panda3d.core import FrameBufferProperties, GraphicsPipe, GraphicsOutput
 
+@dataclass
+class Panda3dCamera:
+    node_path: p3d.core.Camera
+    display_region: p3d.core.DisplayRegion
+    window_properties: p3d.core.WindowProperties
+    graphics_buffer: p3d.core.GraphicsOutput
+    resolution: Resolution
+    texture: p3d.core.Texture
+    depth_texture: p3d.core.Texture
+
+    @staticmethod
+    def create(
+        name: str,
+        resolution: Resolution,
+        app: Optional[ShowBase] = None,
+    ) -> "Panda3dCamera":
+        if app is None:
+            app = base  # type: ignore # noqa: F821
+
+        window_props = p3d.core.WindowProperties()
+        window_props.setSize(resolution[0], resolution[1])
+
+        fb_props = FrameBufferProperties()
+        fb_props.set_depth_bits(24)
+        fb_props.set_color_bits(24)  # Use 24 bits for color
+        fb_props.set_alpha_bits(8)
+        fb_props.set_multisamples(0)  # Disable multisampling
+
+        graphics_buffer = app.graphicsEngine.make_output(
+            app.pipe,
+            f"Graphics Buffer [{name}]",
+            -2,
+            fb_props,
+            window_props,
+            GraphicsPipe.BFRefuseWindow,
+            app.win.get_gsg(),
+            app.win,
+        )
+
+        if graphics_buffer is None:
+            raise RuntimeError("Unable to create graphics buffer")
+
+        texture = p3d.core.Texture()
+        graphics_buffer.addRenderTexture(
+            texture,
+            p3d.core.GraphicsOutput.RTMCopyRam,
+        )
+
+        depth_texture = p3d.core.Texture()
+        depth_texture.setFormat(p3d.core.Texture.FDepthComponent)
+        graphics_buffer.addRenderTexture(
+            depth_texture,
+            p3d.core.GraphicsOutput.RTMCopyRam,
+            p3d.core.GraphicsOutput.RTPDepth,
+        )
+
+        cam_node = p3d.core.Camera(f"Camera [{name}]")
+        lens = p3d.core.MatrixLens()
+        cam_node.setLens(lens)
+
+        cam_node_path = app.camera.attachNewNode(cam_node)
+        cam_node_path.reparentTo(app.render)
+
+        display_region = graphics_buffer.make_display_region(0, 1, 0, 1)
+        display_region.set_sort(0)
+        display_region.set_camera(cam_node_path)
+
+        return Panda3dCamera(
+            node_path=cam_node_path,
+            display_region=display_region,
+            window_properties=window_props,
+            graphics_buffer=graphics_buffer,
+            resolution=resolution,
+            texture=texture,
+            depth_texture=depth_texture,
+        )
