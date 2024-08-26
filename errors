@@ -1,17 +1,19 @@
-PS C:\Users\XRSpecial\gigapose-1> & C:/Users/XRSpecial/miniconda3/envs/gigapose/python.exe c:/Users/XRSpecial/gigapose-1/bop_toolkit/scripts/vis_est_poses.py
-8/26|13:11:42: Processing: C:\Users\XRSpecial\gigapose-1\gigaPose_datasets\results\large_\refined_multiple_predictions\large-pbrreal-rgb-mmodel_tless-test_MultiHypothesis.csv
-[w] Backend (<module 'glumpy.app.window.backends.backend_glfw' from 'C:\\Users\\XRSpecial\\miniconda3\\envs\\gigapose\\lib\\site-packages\\glumpy\\app\\window\\backends\\backend_glfw.py'>) not availableWARNING:glumpy:[w] Backend (<module 'glumpy.app.window.backends.backend_glfw' from 'C:\\Users\\XRSpecial\\miniconda3\\envs\\gigapose\\lib\\site-packages\\glumpy\\app\\window\\backends\\backend_glfw.py'>) not available
-[w] Backend (<module 'glumpy.app.window.backends.backend_glfw_deprecated' from 'C:\\Users\\XRSpecial\\miniconda3\\envs\\gigapose\\lib\\site-packages\\glumpy\\app\\window\\backends\\backend_glfw_deprecated.py'>) not available
-WARNING:glumpy:[w] Backend (<module 'glumpy.app.window.backends.backend_glfw_deprecated' from 'C:\\Users\\XRSpecial\\miniconda3\\envs\\gigapose\\lib\\site-packages\\glumpy\\app\\window\\backends\\backend_glfw_deprecated.py'>) not available
-[w] Backend (<module 'glumpy.app.window.backends.backend_glfw' from 'C:\\Users\\XRSpecial\\miniconda3\\envs\\gigapose\\lib\\site-packages\\glumpy\\app\\window\\backends\\backend_glfw.py'>) not availableWARNING:glumpy:[w] Backend (<module 'glumpy.app.window.backends.backend_glfw' from 'C:\\Users\\XRSpecial\\miniconda3\\envs\\gigapose\\lib\\site-packages\\glumpy\\app\\window\\backends\\backend_glfw.py'>) not available
-[w] Backend (<module 'glumpy.app.window.backends.backend_glfw_imgui' from 'C:\\Users\\XRSpecial\\miniconda3\\envs\\gigapose\\lib\\site-packages\\glumpy\\app\\window\\backends\\backend_glfw_imgui.py'>) not available
-WARNING:glumpy:[w] Backend (<module 'glumpy.app.window.backends.backend_glfw_imgui' from 'C:\\Users\\XRSpecial\\miniconda3\\envs\\gigapose\\lib\\site-packages\\glumpy\\app\\window\\backends\\backend_glfw_imgui.py'>) not available
-8/26|13:11:43: Loading 3D model of object 1...
-Traceback (most recent call last):
-  File "c:\Users\XRSpecial\gigapose-1\bop_toolkit\scripts\vis_est_poses.py", line 106, in <module>
-    ren.add_object(obj_id, model_path, surf_color=model_color)
-  File "C:\Users\XRSpecial\miniconda3\envs\gigapose\lib\site-packages\bop_toolkit_lib\renderer_py.py", line 396, in add_object
-    list(zip(model["pts"], model["normals"], colors, texture_uv)),
-KeyError: 'normals'
-PS C:\Users\XRSpecial\gigapose-1>
+def compute_normals(vertices, faces):
+    # Function to compute normals if they are missing
+    normals = np.zeros(vertices.shape, dtype=vertices.dtype)
+    tris = vertices[faces]
+    n = np.cross(tris[:, 1] - tris[:, 0], tris[:, 2] - tris[:, 0])
+    n /= np.linalg.norm(n, axis=1)[:, np.newaxis]
+    normals[faces[:, 0]] += n
+    normals[faces[:, 1]] += n
+    normals[faces[:, 2]] += n
+    normals /= np.linalg.norm(normals, axis=1)[:, np.newaxis]
+    return normals
 
+# Within the add_object method:
+model = inout.load_ply(model_path)
+
+# Check if normals are present
+if 'normals' not in model:
+    print(f"Normals not found in the model {model_path}. Computing normals...")
+    model['normals'] = compute_normals(model['pts'], model['faces'])
