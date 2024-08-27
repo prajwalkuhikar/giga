@@ -1,51 +1,27 @@
-# Author: Tomas Hodan (hodantom@cmp.felk.cvut.cz)
-# Center for Machine Perception, Czech Technical University in Prague
-
-"""Configuration of the BOP Toolkit."""
-
 import os
+import logging
+from bop_toolkit_lib import config
 
+# Set up the logger
+logger = logging.getLogger('config_logger')
+logger.setLevel(logging.INFO)
 
-######## Basic ########
+# Create file handler which logs even debug messages
+fh = logging.FileHandler('config_log.txt')
+fh.setLevel(logging.INFO)
 
-# Folder with the BOP datasets.
-if "BOP_PATH" in os.environ:
-    datasets_path = os.environ["BOP_PATH"]
-else:
-    datasets_path = r"C:\Users\XRSpecial\gigapose-1\gigaPose_datasets\datasets"
+# Create console handler with a higher log level
+ch = logging.StreamHandler()
+ch.setLevel(logging.INFO)
 
-# Folder with pose results to be evaluated.
-results_path = r"C:\Users\XRSpecial\gigapose-1\gigaPose_datasets\results\large_\refined_multiple_predictions"
+# Create formatter and add it to the handlers
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+fh.setFormatter(formatter)
+ch.setFormatter(formatter)
 
-# Folder for the calculated pose errors and performance scores.
-eval_path = r"C:\Users\XRSpecial\gigapose-1\gigaPose_datasets\results"
+# Add the handlers to the logger
+logger.addHandler(fh)
+logger.addHandler(ch)
 
-######## Extended ########
-
-# Folder for outputs (e.g. visualizations).
-output_path = r"C:\Users\XRSpecial\gigapose-1\gigaPose_datasets\results"
-
-# For offscreen C++ rendering: Path to the build folder of bop_renderer (github.com/thodan/bop_renderer).
-bop_renderer_path = r"/path/to/bop_renderer/build"
-
-# Executable of the MeshLab server.
-meshlab_server_path = r"/path/to/meshlabserver.exe"
-
-# Number of workers for the parallel evaluation of pose errors.
-num_workers = 1
-
-# use torch to calculate the errors
-use_gpu = False
-
-
-
-PS C:\Users\XRSpecial\bop_toolkit> python scripts/eval_bop19_pose.py --renderer_type=python --result_filenames=large-pbrreal-rgb-mmodel_tless-test_MultiHypothesis.csv 
-INFO:eval_bop19_pose:===========
-INFO:eval_bop19_pose:EVALUATING: large-pbrreal-rgb-mmodel_tless-test_MultiHypothesis.csv
-INFO:eval_bop19_pose:===========
-Traceback (most recent call last):
-  File "C:\Users\XRSpecial\bop_toolkit\scripts\eval_bop19_pose.py", line 126, in <module>
-    ests = inout.load_bop_results(
-  File "C:\Users\XRSpecial\miniconda3\envs\toolkit\lib\site-packages\bop_toolkit_lib\inout.py", line 291, in load_bop_results
-    with open(path, "r") as f:
-FileNotFoundError: [Errno 2] No such file or directory: '/path/to/folder/with/results\\large-pbrreal-rgb-mmodel_tless-test_MultiHypothesis.csv'
+# Log the config results_path
+logger.info(f"Results path: {config.results_path}")
