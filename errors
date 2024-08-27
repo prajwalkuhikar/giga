@@ -1,19 +1,54 @@
-def compute_normals(vertices, faces):
-    # Function to compute normals if they are missing
-    normals = np.zeros(vertices.shape, dtype=vertices.dtype)
-    tris = vertices[faces]
-    n = np.cross(tris[:, 1] - tris[:, 0], tris[:, 2] - tris[:, 0])
-    n /= np.linalg.norm(n, axis=1)[:, np.newaxis]
-    normals[faces[:, 0]] += n
-    normals[faces[:, 1]] += n
-    normals[faces[:, 2]] += n
-    normals /= np.linalg.norm(normals, axis=1)[:, np.newaxis]
-    return normals
+numpy\core\src\multiarray\scalarapi.c(74): warning C4013: "PyUnicode_AS_DATA" undefiniert; Annahme: extern mit R\x81ckgabetyp int
+        numpy\core\src\multiarray\scalarapi.c(74): warning C4312: "Typumwandlung": Konvertierung von "int" in gr”áeren Typ "void *"
+        numpy\core\src\multiarray\scalarapi.c(135): warning C4312: "Typumwandlung": Konvertierung von "int" in gr”áeren Typ "void *"
+        numpy\core\src\multiarray\scalarapi.c(326): warning C4013: "PyUnicode_GET_SIZE" undefiniert; Annahme: extern mit R\x81ckgabetyp int
+        numpy\core\src\multiarray\scalarapi.c(327): warning C4244: "Funktion": Konvertierung von "npy_intp" in "int", m”glicher Datenverlust
+        numpy\core\src\multiarray\scalarapi.c(571): warning C4244: "=": Konvertierung von "Py_ssize_t" in "int", m”glicher Datenverlust
+        numpy\core\src\multiarray\scalarapi.c(574): warning C4013: "PyUnicode_GET_DATA_SIZE" undefiniert; Annahme: extern mit R\x81ckgabetyp int
+        numpy\core\src\multiarray\scalarapi.c(798): error C2106: "=": Linker Operand muss ein L-Wert sein
+        error: Command "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.41.34120\bin\HostX86\x64\cl.exe /c /nologo /O2 /W3 /GL /DNDEBUG /MD -DNPY_INTERNAL_BUILD=1 -DHAVE_NPY_CONFIG_H=1 -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE=1 -D_LARGEFILE64_SOURCE=1 -Ibuild\src.win-amd64-3.1\numpy\core\src\umath -Ibuild\src.win-amd64-3.1\numpy\core\src\npymath -Ibuild\src.win-amd64-3.1\numpy\core\src\common -Inumpy\core\incE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE=1 -D_LARGEFILE64_SOURCE=1 -Ibuild\src.win-amd64-3.1\numpy\core\src\umath -Ibuild\src.win-amd64-3.1\numpy\core\src\npymath -Ibuild\src.win-amd64-3.1\numpy\core\src\common -Inumpy\core\include -Ibuild\src.win-amd64-3.1\numpy\core\include/numpy -Inumpy\core\src\common -Inumpy\core\src -Inumpy\core -Inumpy\core\src\npymath -Inumpy\core\src\multiarray -Inumpy\core\src\umath -Inumpy\core\src\npysort -IC:\Users\Xlude -Ibuild\src.win-amd64-3.1\numpy\core\include/numpy -Inumpy\core\src\common -Inumpy\core\src -Inumpy\core -Inumpy\core\src\npymath -Inumpy\core\src\multiarray -Inumpy\core\src\umath -Inumpy\core\src\npysort -IC:\Users\XRSpecial\miniconda3\envs\bop\include -IC:\Users\XRSpecial\miniconda3\envs\bop\Include -Ibuild\src.win-amd64-3.1\numpy\core\src\common -Ibuild\src.win-amd64-3.1\numpy\core\src\npymath -Ibuild\src.win-amd64-3.1\numpy\core\srcRSpecial\miniconda3\envs\bop\include -IC:\Users\XRSpecial\miniconda3\envs\bop\Include -Ibuild\src.win-amd64-3.1\numpy\core\src\common -Ibuild\src.win-amd64-3.1\numpy\core\src\npymath -Ibuild\src.win-amd64-3.1\numpy\core\src\common -Ibuild\src.win-amd64-3.1\numpy\core\src\npymath -IC:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.41.34120\include -IC:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\VS\include -IC:\Program Files (x86)\Windows Kits\10\include\10.0.22621.0\ucrt -IC:\Program Files (x86)\Windows Kits\10\\include\10.0.22621.0\\um -IC:\Program Files (x86)\Windows Kits\10\\include\10.0.22621.0\\sha\common -Ibuild\src.win-amd64-3.1\numpy\core\src\npymath -IC:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.41.34120\include -IC:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\VS\include -IC:\Program Files (x86)\Windows Kits\10\include\10.0.22621.0\ucrt -IC:\Program Files (x86)\Windows Kits\10\\include\10.0.22621.0\\um -IC:\Program Files (x86)\Windows Kits\10\\include\10.0.22621.0\\shared -IC:\Program Files (x86)\Windows Kits\10\\include\10.0.22621.0\\winrt -IC:\Program Files (x86)\Windows Kits\10\\include\10.0.22621.0\\cppwinrt -IC:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um /Tcnumpy\core\red -IC:\Program Files (x86)\Windows Kits\10\\include\10.0.22621.0\\winrt -IC:\Program Files (x86)\Windows Kits\10\\include\10.0.22621.0\\cppwinrt -IC:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um /Tcnumpy\core\src\multiarray\scalarapi.c /Fobuild\temp.win-amd64-cpython-312\Release\numpy\core\src\multiarray\scalarapi.obj" failed with exit status 2
+src\multiarray\scalarapi.c /Fobuild\temp.win-amd64-cpython-312\Release\numpy\core\src\multiarray\scalarapi.obj" failed with exit status 2
+        [end of output]
 
-# Within the add_object method:
-model = inout.load_ply(model_path)
+        [end of output]
 
-# Check if normals are present
-if 'normals' not in model:
-    print(f"Normals not found in the model {model_path}. Computing normals...")
-    model['normals'] = compute_normals(model['pts'], model['faces'])
+        note: This error originates from a subprocess, and is likely not a problem with pip.
+        note: This error originates from a subprocess, and is likely not a problem with pip.
+        ERROR: Failed building wheel for numpy
+        ERROR: Failed building wheel for numpy
+        Running setup.py clean for numpy
+        Running setup.py clean for numpy
+        error: subprocess-exited-with-error
+
+        error: subprocess-exited-with-error
+
+        python setup.py clean did not run successfully.
+        exit code: 1
+
+        [10 lines of output]
+        Running from numpy source directory.
+
+        `setup.py clean` is not supported, use one of the following instead:
+
+          - `git clean -xdf` (cleans all files)
+          - `git clean -Xdf` (cleans all versioned files, doesn't touch
+                              files that aren't checked into the git repo)
+
+        Add `--force` to your command to use it anyway if you must (unsupported).
+
+        [end of output]
+
+        note: This error originates from a subprocess, and is likely not a problem with pip.
+        ERROR: Failed cleaning build dir for numpy
+      Failed to build numpy
+      ERROR: ERROR: Failed to build installable wheels for some pyproject.toml based projects (numpy)
+      [end of output]
+
+  note: This error originates from a subprocess, and is likely not a problem with pip.
+error: subprocess-exited-with-error
+
+× pip subprocess to install build dependencies did not run successfully.
+│ exit code: 1
+╰─> See above for output.
+
+note: This error originates from a subprocess, and is likely not a problem with pip.
