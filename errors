@@ -1,3 +1,45 @@
-S C:\Users\XRSpecial\bop_toolkit> & C:/Users/XRSpecial/miniconda3/envs/toolkit/python.exe c:/Users/XRSpecial/bop_toolkit/scripts/configtesting.py
-2024-08-27 13:43:06,529 - config_logger - INFO - Results path: /path/to/folder/with/results
-PS C:\Users\XRSpecial\bop_toolkit> 
+PS C:\Users\XRSpecial\bop_toolkit> python scripts/eval_bop19_pose.py --renderer_type=python --result_filenames=large-pbrreal-rgb-mmodel_tless-test_MultiHypothesis.csv
+INFO:eval_bop19_pose:===========
+INFO:eval_bop19_pose:EVALUATING: large-pbrreal-rgb-mmodel_tless-test_MultiHypothesis.csv
+INFO:eval_bop19_pose:===========
+INFO:eval_bop19_pose:Running: python C:\Users\XRSpecial\bop_toolkit\scripts\eval_calc_errors.py --n_top=-1 --error_type=vsd --result_filenames=large-pbrreal-rgb-mmodel_tless-test_MultiHypothesis.csv --renderer_type=python --results_path=C:\Users\XRSpecial\bop_toolkit\results\large_\refined_multiple_predictions --eval_path=C:\Users\XRSpecial\bop_toolkit\results --targets_filename=test_targets_bop19.json --max_sym_disc_step=0.01 --skip_missing=1 --num_workers=1 --vsd_deltas=hb:15,icbin:15,icmi:15,itodd:5,lm:15,lmo:15,ruapc:15,tless:15,tudl:15,tyol:15,ycbv:15,hope:15 --vsd_taus=0.05,0.1,0.15000000000000002,0.2,0.25,0.3,0.35000000000000003,0.4,0.45,0.5 --vsd_normalized_by_diameter=True
+INFO:eval_calc_errors:-----------
+INFO:eval_calc_errors:Parameters:
+INFO:eval_calc_errors:- n_top: -1
+INFO:eval_calc_errors:- visib_gt_min: -1.0
+INFO:eval_calc_errors:- error_type: vsd
+INFO:eval_calc_errors:- vsd_deltas: {'hb': 15.0, 'icbin': 15.0, 'icmi': 15.0, 'itodd': 5.0, 'lm': 15.0, 'lmo': 15.0, 'ruapc': 15.0, 'tless': 15.0, 'tudl': 15.0, 'tyol': 15.0, 'ycbv': 15.0, 'hope': 15.0}
+INFO:eval_calc_errors:- vsd_taus: [0.05, 0.1, 0.15000000000000002, 0.2, 0.25, 0.3, 0.35000000000000003, 0.4, 0.45, 0.5]
+INFO:eval_calc_errors:- vsd_normalized_by_diameter: True
+INFO:eval_calc_errors:- max_sym_disc_step: 0.01
+INFO:eval_calc_errors:- skip_missing: True
+INFO:eval_calc_errors:- renderer_type: python
+INFO:eval_calc_errors:- result_filenames: ['large-pbrreal-rgb-mmodel_tless-test_MultiHypothesis.csv']
+INFO:eval_calc_errors:- results_path: C:\Users\XRSpecial\bop_toolkit\results\large_\refined_multiple_predictions
+INFO:eval_calc_errors:- eval_path: C:\Users\XRSpecial\bop_toolkit\results
+INFO:eval_calc_errors:- datasets_path: C:\Users\XRSpecial\bop_toolkit\datasets
+INFO:eval_calc_errors:- targets_filename: test_targets_bop19.json
+INFO:eval_calc_errors:- out_errors_tpath: {eval_path}\{result_name}\{error_sign}\errors_{scene_id:06d}.json
+INFO:eval_calc_errors:- num_workers: 1
+INFO:eval_calc_errors:- eval_mode: localization
+INFO:eval_calc_errors:-----------
+INFO:eval_calc_errors:Processing: large-pbrreal-rgb-mmodel_tless-test_MultiHypothesis.csv
+[w] Backend (<module 'glumpy.app.window.backends.backend_glfw' from 'C:\\Users\\XRSpecial\\miniconda3\\envs\\toolkit\\lib\\site-packages\\glumpy\\app\\window\\backends\\backend_glfw.py'>) not available
+WARNING:glumpy:[w] Backend (<module 'glumpy.app.window.backends.backend_glfw' from 'C:\\Users\\XRSpecial\\miniconda3\\envs\\toolkit\\lib\\site-packages\\glumpy\\app\\window\\backends\\backend_glfw.py'>) not available       
+Traceback (most recent call last):
+  File "C:\Users\XRSpecial\bop_toolkit\scripts\eval_calc_errors.py", line 217, in <module>
+    ren.add_object(obj_id, dp_model["model_tpath"].format(obj_id=obj_id))
+  File "C:\Users\XRSpecial\miniconda3\envs\toolkit\lib\site-packages\bop_toolkit_lib\renderer_py.py", line 423, in add_object
+    rgb_program["u_use_texture"] = int(False)
+  File "C:\Users\XRSpecial\miniconda3\envs\toolkit\lib\site-packages\glumpy\gloo\program.py", line 353, in __setitem__
+    self._uniforms[name].set_data(data)
+  File "C:\Users\XRSpecial\miniconda3\envs\toolkit\lib\site-packages\glumpy\gloo\variable.py", line 280, in set_data
+    self._data[...] = np.array(data,copy=False).ravel()
+ValueError: Unable to avoid copy while creating an array as requested.
+If using `np.array(obj, copy=False)` replace it with `np.asarray(obj)` to allow a copy when needed (no behavior change in NumPy 1.x).
+For more details, see https://numpy.org/devdocs/numpy_2_0_migration_guide.html#adapting-to-changes-in-the-copy-keyword.
+Traceback (most recent call last):
+  File "C:\Users\XRSpecial\bop_toolkit\scripts\eval_bop19_pose.py", line 186, in <module>
+    raise RuntimeError("Calculation of pose errors failed.")
+RuntimeError: Calculation of pose errors failed.
+PS C:\Users\XRSpecial\bop_toolkit>
