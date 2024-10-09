@@ -1,28 +1,111 @@
-import os
-import pandas as pd
+(ultralytics-env) PS C:\Users\XRSpecial\Desktop\yolo_test> conda install h5py
+Channels:
+ - defaults
+ - conda-forge
+ - nvidia
+ - pytorch
+Platform: win-64
+Collecting package metadata (repodata.json): done
+Solving environment: done
 
-# Function to filter invalid bounding boxes
-def filter_invalid_bboxes(file_path):
-    # Read the file into a DataFrame
-    df = pd.read_csv(file_path, sep=' ', header=None, names=['class', 'x_center', 'y_center', 'width', 'height'])
-    
-    # Filter out rows where any of the bbox values are out of the range [0, 1]
-    filtered_df = df[(df['x_center'] >= 0) & (df['x_center'] <= 1) &
-                     (df['y_center'] >= 0) & (df['y_center'] <= 1) &
-                     (df['width'] > 0) & (df['width'] <= 1) &
-                     (df['height'] > 0) & (df['height'] <= 1)]
-    
-    # Save the filtered DataFrame back to the file
-    filtered_df.to_csv(file_path, sep=' ', header=False, index=False)
+## Package Plan ##
 
-# Path to the directory containing label files
-labels_dir = r'C:\Users\DEBIEKPR\Desktop\yolo_test\datasets\tless\labels\val'
+  environment location: C:\Users\XRSpecial\miniconda3\envs\ultralytics-env
 
-# Iterate over all label files in the directory
-for filename in os.listdir(labels_dir):
-    if filename.endswith('.txt'):
-        file_path = os.path.join(labels_dir, filename)
-        filter_invalid_bboxes(file_path)
-        print(f"Processed {filename}")
+  added / updated specs:
+    - h5py
 
-print("Finished processing all label files.")
+
+The following packages will be downloaded:
+
+    package                    |            build
+    ---------------------------|-----------------
+    qt6-main-6.4.2             |       hc6d59a8_1        55.9 MB  conda-forge
+    ------------------------------------------------------------
+                                           Total:        55.9 MB
+
+The following NEW packages will be INSTALLED:
+
+  gettext            conda-forge/win-64::gettext-0.22.5-h5728263_3
+  gettext-tools      conda-forge/win-64::gettext-tools-0.22.5-h5a7288d_3
+  glib               conda-forge/win-64::glib-2.78.1-h12be248_0
+  glib-tools         conda-forge/win-64::glib-tools-2.78.1-h12be248_0
+  gst-plugins-base   pkgs/main/win-64::gst-plugins-base-1.22.3-h23ce68f_0
+  gstreamer          pkgs/main/win-64::gstreamer-1.22.3-h2bbff1b_0
+  h5py               pkgs/main/win-64::h5py-3.11.0-py38hed405ee_0
+  icc_rt             pkgs/main/win-64::icc_rt-2022.1.0-h6049295_2
+  jpeg               pkgs/main/win-64::jpeg-9e-h827c3e9_3
+  libasprintf-devel  conda-forge/win-64::libasprintf-devel-0.22.5-h5728263_3
+  libclang           conda-forge/win-64::libclang-15.0.7-default_h3a3e6c3_5
+  libgettextpo-devel conda-forge/win-64::libgettextpo-devel-0.22.5-h5728263_3
+  libintl-devel      conda-forge/win-64::libintl-devel-0.22.5-h5728263_3
+  libogg             pkgs/main/win-64::libogg-1.3.5-h2bbff1b_1
+  libvorbis          pkgs/main/win-64::libvorbis-1.3.7-he774522_0
+  mkl-service        pkgs/main/win-64::mkl-service-2.4.0-py38h2bbff1b_1
+  mkl_fft            pkgs/main/win-64::mkl_fft-1.3.8-py38h2bbff1b_0
+  mkl_random         pkgs/main/win-64::mkl_random-1.2.4-py38h59b6b97_0
+  numpy              pkgs/main/win-64::numpy-1.24.3-py38h79a8e48_1
+  numpy-base         pkgs/main/win-64::numpy-base-1.24.3-py38h8a87ada_1
+  qt-main            conda-forge/win-64::qt-main-5.15.8-h720456b_6
+
+The following packages will be UPDATED:
+
+  ca-certificates    conda-forge::ca-certificates-2024.8.3~ --> pkgs/main::ca-certificates-2024.9.24-haa95532_0
+  libxml2            conda-forge::libxml2-2.12.7-h0f24e4e_4 --> pkgs/main::libxml2-2.13.1-h24da03e_2
+
+The following packages will be SUPERSEDED by a higher-priority channel:
+
+  cairo                conda-forge::cairo-1.18.0-h32b962e_3 --> pkgs/main::cairo-1.16.0-haedb8bc_5
+  certifi            conda-forge/noarch::certifi-2024.8.30~ --> pkgs/main/win-64::certifi-2024.8.30-py38haa95532_0
+  ffmpeg             conda-forge::ffmpeg-6.1.2-gpl_h082024~ --> pkgs/main::ffmpeg-4.2.2-he774522_0
+  hdf5               conda-forge::hdf5-1.14.3-nompi_h2b43c~ --> pkgs/main::hdf5-1.12.1-h51c971a_3
+  krb5                  conda-forge::krb5-1.21.3-hdf4eb48_0 --> pkgs/main::krb5-1.20.1-h5b6d351_0
+  lcms2                  conda-forge::lcms2-2.16-h67d730c_0 --> pkgs/main::lcms2-2.12-h83e58a3_0
+  libcurl            conda-forge::libcurl-8.10.1-h1ee3ff0_0 --> pkgs/main::libcurl-8.9.1-h0416ee5_0
+  libjpeg-turbo      conda-forge::libjpeg-turbo-3.0.0-hcfc~ --> pkgs/main::libjpeg-turbo-2.0.0-h196d8e1_0
+  libpng              conda-forge::libpng-1.6.44-h3ca93ac_0 --> pkgs/main::libpng-1.6.39-h8cc25b3_0
+  libprotobuf        conda-forge::libprotobuf-4.25.3-h47a0~ --> pkgs/main::libprotobuf-3.20.3-h23ce68f_0
+  libtiff             conda-forge::libtiff-4.7.0-hb151862_0 --> pkgs/main::libtiff-4.4.0-h8a3f274_2
+  openjpeg           conda-forge::openjpeg-2.5.2-h3d672ee_0 --> pkgs/main::openjpeg-2.4.0-h4afccc4_2
+  pillow             conda-forge::pillow-10.4.0-py38h8d106~ --> pkgs/main::pillow-10.4.0-py38h827c3e9_0
+  snappy               conda-forge::snappy-1.2.1-h23299a8_0 --> pkgs/main::snappy-1.1.10-h6c2663c_1
+
+The following packages will be DOWNGRADED:
+
+  double-conversion                        3.3.0-h63175ca_0 --> 3.2.0-h63175ca_1
+  harfbuzz                                 9.0.0-h2bedf89_1 --> 6.0.0-he256f1b_0
+  icu                                       75.1-he0c23c2_0 --> 70.1-h0e60522_0
+  imath                                   3.1.12-hbb528cf_0 --> 3.1.11-h12be248_0
+  jasper                                   4.2.4-hcb1a123_0 --> 2.0.33-hc2e4405_1
+  libclang13                      19.1.0-default_ha5278ca_0 --> 15.0.7-default_hf64faad_5
+  libglib                                 2.80.3-h7025463_2 --> 2.78.1-he8f3873_0
+  libopencv                     4.10.0-qt6_py38hfadb1d8_603 --> 4.6.0-py38h3d2d820_0
+  libopenvino                           2024.3.0-hfe1841e_0 --> 2023.2.0-h63175ca_0
+  libopenvino-auto-~                    2024.3.0-h04f32e0_0 --> 2023.2.0-h63175ca_0
+  libopenvino-auto-~                    2024.3.0-h04f32e0_0 --> 2023.2.0-h63175ca_0
+  libopenvino-heter~                    2024.3.0-h372dad0_0 --> 2023.2.0-h63175ca_0
+  libopenvino-intel~                    2024.3.0-hfe1841e_0 --> 2023.2.0-h63175ca_0
+  libopenvino-intel~                    2024.3.0-hfe1841e_0 --> 2023.2.0-h63175ca_0
+  libopenvino-ir-fr~                    2024.3.0-h372dad0_0 --> 2023.2.0-h63175ca_0
+  libopenvino-onnx-~                    2024.3.0-hdeef14f_0 --> 2023.2.0-h63175ca_0
+  libopenvino-paddl~                    2024.3.0-hdeef14f_0 --> 2023.2.0-h63175ca_0
+  libopenvino-pytor~                    2024.3.0-he0c23c2_0 --> 2023.2.0-h63175ca_0
+  libopenvino-tenso~                    2024.3.0-h7c40eac_0 --> 2023.2.0-h63175ca_0
+  libopenvino-tenso~                    2024.3.0-he0c23c2_0 --> 2023.2.0-h63175ca_0
+  libzlib                                  1.3.1-h2466b09_1 --> 1.2.13-h2466b09_6
+  opencv                        4.10.0-qt6_py38ha3d2b97_603 --> 4.6.0-py38haa244fe_0
+  openexr                                  3.2.2-h9aba623_2 --> 3.2.2-h72640d8_1
+  pcre2                                    10.44-h3d7b363_2 --> 10.40-h17e33f8_0
+  py-opencv                     4.10.0-qt6_py38h8ff50eb_603 --> 4.6.0-py38h4317176_0
+  qt6-main                                 6.7.2-h2fedb45_5 --> 6.4.2-hc6d59a8_1
+  zlib                                     1.3.1-h2466b09_1 --> 1.2.13-h2466b09_6
+
+
+Proceed ([y]/n)? y
+
+
+Downloading and Extracting Packages:
+                                                                                                                                                                                                                                   
+
+InvalidArchiveError('Error with archive C:\\Users\\XRSpecial\\miniconda3\\pkgs\\qt6-main-6.4.2-hc6d59a8_1.conda.  You probably need to delete and re-download or re-create this file.  Message was:\n\nfailed with error: seeking b)
+
